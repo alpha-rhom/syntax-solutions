@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :libraries
   resources :bikes, constraints: ->(request){ !request.format.html? }
   devise_for :users
   
