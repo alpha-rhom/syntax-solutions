@@ -1,6 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Accordion, Icon, Form, Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Accordion, Icon, Form, Button, Modal } from 'semantic-ui-react'
+
+//components
+import UpdateCard from "./UpdateCard"
 
 class Card extends React.Component {
   constructor(props){
@@ -32,22 +35,12 @@ class Card extends React.Component {
                   <Accordion>
                     <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
                       <Icon name='dropdown' />
-                        <Modal trigger={<Icon name='edit' />}>
-                          <Modal.Header>Select a Photo</Modal.Header>
-                          <Modal.Content >
-                          {librarys.title}
-                            <Modal.Description>
-                              <Header>Default Profile Image</Header>
-                              <p>We've found the following gravatar image associated with your e-mail address.</p>
-                              <p>Is it okay to use this photo?</p>
-                            </Modal.Description>
-                          </Modal.Content>
-                        </Modal>
-                      {librarys.title}
+                      <UpdateCard handleUpdate={this.props.handleUpdate} libraryId={librarys.id}/>
+                      Title: {librarys.title}
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === 0}>
                     Description: <br></br>
-                    {librarys.desc}
+                    {librarys.desc} <br></br>
                     Markdown: <br></br>
                     {librarys.markdown}
                     </Accordion.Content>

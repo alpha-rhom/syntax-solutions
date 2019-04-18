@@ -29,15 +29,38 @@ class MainPage extends React.Component {
     })
   }
 
+  //Edits cards
+  handleUpdate = (library) => {
+    fetch(`http://localhost:3000/libraries/${library.id}`,
+    {
+      method: 'PUT',
+      body: JSON.stringify({library: library}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+        this.updateLibrary(library)
+      })
+  }
+  
+  updateLibrary(library){
+    let newLibrarys = this.state.librarys.filter((f) => f.id !== library.id)
+    newLibrarys.push(library)
+    this.setState({
+      librarys: newLibrarys
+    })
+  }
+
+
   render () {
 
-    const { activeIndex } = this.state
-    const{ librarys } = this.state
+    const { activeIndex, librarys } = this.state
+    const{ handleUpdate } = this
 
     return (
       <React.Fragment>
         {console.log(librarys)}
-        <Card librarys={librarys} />
+        <Card librarys={librarys} handleUpdate={handleUpdate}/>
       </React.Fragment>
     );
   }
