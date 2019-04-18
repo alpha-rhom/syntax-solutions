@@ -35,7 +35,7 @@ class UpdateCard extends React.Component {
     return (
       <React.Fragment>
         <Modal trigger={<Icon name='edit' />}>
-          <Modal.Header>Select a Photo</Modal.Header>
+          <Modal.Header>Update Card</Modal.Header>
           <Modal.Content >
               <Form>
                 <Form.Field>

@@ -51,16 +51,34 @@ class MainPage extends React.Component {
     })
   }
 
+  handleDelete = (id) => {
+    fetch(`http://localhost:3000/libraries/${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      this.deleteLibrary(id);
+    })
+  }
+  
+  deleteLibrary = (id) => {
+    const newLibrarys = this.state.librarys.filter((library) => library.id !== id)
+    this.setState({
+      librarys: newLibrarys
+    })
+  }
 
   render () {
 
     const { activeIndex, librarys } = this.state
-    const{ handleUpdate } = this
+    const{ handleUpdate, handleDelete } = this
 
     return (
       <React.Fragment>
         {console.log(librarys)}
-        <Card librarys={librarys} handleUpdate={handleUpdate}/>
+        <Card librarys={librarys} handleUpdate={handleUpdate} handleDelete={handleDelete}/>
       </React.Fragment>
     );
   }
