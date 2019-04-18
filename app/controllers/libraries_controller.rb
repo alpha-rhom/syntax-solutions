@@ -5,6 +5,7 @@ class LibrariesController < ApplicationController
   # GET /libraries.json
   def index
     @libraries = Library.all
+    render :json => @libraries
   end
 
   # GET /libraries/1
