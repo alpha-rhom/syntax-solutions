@@ -35,6 +35,8 @@ class Card extends React.Component {
                   <Accordion>
                     <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
                       <Icon name='dropdown' />
+                      <Icon name='trash alternate' onClick={() => {
+                               this.props.handleDelete(librarys.id)}}/>
                       <UpdateCard handleUpdate={this.props.handleUpdate} libraryId={librarys.id}/>
                       Title: {librarys.title}
                     </Accordion.Title>

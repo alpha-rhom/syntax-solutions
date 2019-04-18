@@ -51,11 +51,9 @@ class LibrariesController < ActionController::API
   # DELETE /libraries/1
   # DELETE /libraries/1.json
   def destroy
+    @library = Library.find(params[:id])
     @library.destroy
-    respond_to do |format|
-      format.html { redirect_to libraries_url, notice: 'Library was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    render json: @library
   end
 
   private
