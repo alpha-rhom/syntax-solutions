@@ -1,11 +1,13 @@
-class LibrariesController < ApplicationController
+class LibrariesController < ActionController::API
   before_action :set_library, only: [:show, :edit, :update, :destroy]
 
   # GET /libraries
   # GET /libraries.json
   def index
-    @libraries = Library.all
-    render :json => @libraries
+    @user = User.all
+    @libraries = Library.all.order(:created_at)
+
+    render :json => @libraries, :include => :user
   end
 
   # GET /libraries/1
@@ -41,15 +43,9 @@ class LibrariesController < ApplicationController
   # PATCH/PUT /libraries/1
   # PATCH/PUT /libraries/1.json
   def update
-    respond_to do |format|
-      if @library.update(library_params)
-        format.html { redirect_to @library, notice: 'Library was successfully updated.' }
-        format.json { render :show, status: :ok, location: @library }
-      else
-        format.html { render :edit }
-        format.json { render json: @library.errors, status: :unprocessable_entity }
-      end
-    end
+    library = Library.find(params[:id])
+    library.update_attributes(library_params)
+    render json: library
   end
 
   # DELETE /libraries/1
@@ -70,6 +66,6 @@ class LibrariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def library_params
-      params.require(:library).permit(:title, :desc, :markdown, :user_id)
+      params.require(:library).permit(:title, :markdown, :desc)
     end
 end
