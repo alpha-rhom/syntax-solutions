@@ -29,18 +29,18 @@ class Card extends React.Component {
     return (
       <React.Fragment>
         <ul>
-            {this.props.librarys.map((librarys)=>{
+            {this.props.librarys.map((librarys, index)=>{
               return(
                 <div>
                   <Accordion>
                     <Accordion.Title >
-                      <Icon name='dropdown' active={activeIndex === 0} index={0} onClick={this.handleClick}/>
+                      <Icon name='dropdown' active={activeIndex === index} index={index} onClick={this.handleClick}/>
                       <Icon name='trash alternate' onClick={() => {
                                this.props.handleDelete(librarys.id)}}/>
                       <UpdateCard handleUpdate={this.props.handleUpdate} libraryId={librarys.id}/>
                       Title: {librarys.title}
                     </Accordion.Title>
-                    <Accordion.Content active={activeIndex === 0}>
+                    <Accordion.Content active={activeIndex === index}>
                     Description: <br></br>
                     {librarys.desc} <br></br>
                     Markdown: <br></br>
