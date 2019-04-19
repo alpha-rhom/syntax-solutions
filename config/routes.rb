@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :libraries, constraints: ->(request){ !request.format.html? }
   devise_for :users
   
