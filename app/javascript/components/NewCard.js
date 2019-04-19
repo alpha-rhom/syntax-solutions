@@ -24,7 +24,7 @@ class NewCard extends React.Component {
 
   submitForm = () => {
     this.props.createLibrary(this.state.form)
-    console.log('hello')
+    document.elementFromPoint(1, 1).click()
   }
 
   render () {

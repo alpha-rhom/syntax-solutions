@@ -55,6 +55,6 @@ class LibrariesController < ActionController::API
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def library_params
-      params.require(:library).permit(:title, :markdown, :desc)
+      params.require(:library).permit(:title, :markdown, :desc, :likes)
     end
 end

@@ -62,6 +62,7 @@ class Card extends React.Component {
                         handleUpdate={this.props.handleUpdate} 
                         libraryId={librarys.id}
                         likes={librarys.likes}
+                        librarys={librarys}
                       />
                         Title: {librarys.title} Likes: {librarys.likes}
                       <LikeUnlike 

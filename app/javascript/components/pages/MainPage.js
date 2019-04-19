@@ -60,6 +60,10 @@ class MainPage extends React.Component {
   updateLibrary(library){
     let newLibrarys = this.state.librarys.filter((f) => f.id !== library.id)
     newLibrarys.push(library)
+    newLibrarys.sort(function(a, b) {
+      return parseFloat(a.id) - parseFloat(b.id);
+  })
+    console.log(newLibrarys[0].id)
     this.setState({
       librarys: newLibrarys
     })
