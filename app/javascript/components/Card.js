@@ -48,7 +48,6 @@ class Card extends React.Component {
         <div className='search-bar'>
           <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
         </div>
-        {/* <Dropdown className='dropdown' placeholder='Choose language, framework...' multiple selection options={options} /> */}
         <ul>
             {filteredCards.map((librarys, index)=>{
               return(
