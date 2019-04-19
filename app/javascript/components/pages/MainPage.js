@@ -91,7 +91,6 @@ class MainPage extends React.Component {
 
     return (
       <React.Fragment>
-        {console.log(librarys)}
         <Card librarys={librarys} handleUpdate={handleUpdate} handleDelete={handleDelete} />
         <NewCard createLibrary={createLibrary} />
       </React.Fragment>
