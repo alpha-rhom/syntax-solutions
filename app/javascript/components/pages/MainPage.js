@@ -6,7 +6,6 @@ import { allLibrarys } from '../data/librarys'
 
 //components
 import Card from "../Card"
-import SearchFilter from '../SearchFilter'
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -60,7 +59,6 @@ class MainPage extends React.Component {
 
     return (
       <React.Fragment>
-        <SearchFilter />
         {console.log(librarys)}
         <Card librarys={librarys} handleUpdate={handleUpdate}/>
       </React.Fragment>

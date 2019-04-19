@@ -9,9 +9,13 @@ class Card extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      activeIndex: null
+      activeIndex: null,
+      search: ''
     }
   }
+    updateSearch = (event) => {
+      this.setState({search: event.target.value.substr(0, 20)})
+    }
 
   //Opens and closes the accordion
   handleClick = (e, titleProps) => {
@@ -26,10 +30,19 @@ class Card extends React.Component {
     const { activeIndex } = this.state
     const { showEditMenu } = this
 
+    let filteredCards = this.props.librarys.filter(
+        (library) => {
+          return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+        }
+      )
+
     return (
       <React.Fragment>
+        <div>
+          Filter: <input type="text" value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
+        </div>
         <ul>
-            {this.props.librarys.map((librarys)=>{
+            {filteredCards.map((librarys)=>{
               return(
                 <div>
                   <Accordion>
