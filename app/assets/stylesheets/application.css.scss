@@ -15,3 +15,133 @@
  */
 
  @import "semantic-ui";
+
+.container {
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+}
+
+@media (min-width: 960px) {
+	.container {
+		margin: 0 auto;
+		position: relative;
+		width: 960px;
+	}
+}
+
+//  header of wave
+.main-header {
+	background: #959ce9 radial-gradient(circle at 50% 300%, #959ce9 12.18%,#5862dd 74.53%);
+	height: 210px;
+	padding-top: 20px;
+	padding-bottom: 80px; /* equal to wave SVG height */
+	position: relative;
+	text-align: center;
+}
+
+// position
+.nav {
+	color: #fff;
+	position: absolute;
+	top: 0;
+	left: 15px;
+}
+
+// login button
+.nav a {
+	color: #fff;
+}
+
+.nav a:hover {
+	background: none;
+	color: #000;
+}
+
+// login icon
+.nav a:hover i {
+	color: #fff;
+}
+
+// logo
+.logo {
+	height: 70px;
+}
+
+.logo .emblem-bg {
+	fill: #0063c4;
+}
+
+.logo .emblem-icon {
+	fill: #fff;
+}
+
+.logo .text {
+	fill: #fff;
+}
+
+// wave
+.wave {
+	position: absolute;
+	bottom: 0;
+	fill: #fff; /* equal to background color */
+	left: 0;
+	right: 0;
+}
+
+// search bar 
+.search-bar {
+	width: 400px;
+	margin: 0 auto;
+	position: absolute;
+	top: 120px;
+	left: 0;
+	right: 0;
+}
+
+// scrolling header
+.main-header, .scroll {
+	transition: all .5s ease-in;
+}
+
+.scroll .container {
+	position: fixed;
+	left: 0;
+	right: 0;
+}
+
+.scroll .container::before {
+	content: "";
+	background: #959ce9 radial-gradient(circle at 50% 300%, #959ce9 12.18%, #5862dd 74.53%);
+	height: 110px;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.scroll .nav {
+	position: absolute;
+}
+
+.scroll .logo {
+	margin-left: -280px;
+	position: relative;
+}
+
+.scroll .logo .text {
+	display: none;
+}
+
+.scroll + .search-bar {
+	position: fixed;
+	top: 36px;
+}
+
+// drop-down bar 
+.dropdown{
+width: 300px;
+margin: 0 auto;
+}

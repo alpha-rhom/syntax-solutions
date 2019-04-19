@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Accordion, Icon, Form, Button, Modal } from 'semantic-ui-react'
+import { Accordion, Icon, Input, Form, Button, Modal, Dropdown } from 'semantic-ui-react'
 
 //components
 import UpdateCard from "./UpdateCard"
@@ -26,7 +26,14 @@ class Card extends React.Component {
   }
 
   render () {
-
+	// 	const options = [
+	// 		{ key: 'css', text: 'CSS', value: 'css' },
+	// 		{ key: 'html', text: 'HTML', value: 'html' },
+	// 		{ key: 'javascript', text: 'Javascript', value: 'javascript' },
+	// 		{ key: 'rails', text: 'Rails', value: 'rails' },
+	// 		{ key: 'react', text: 'React', value: 'react' },
+	// 		{ key: 'ruby', text: 'Ruby', value: 'ruby' },
+	// 	]
     const { activeIndex } = this.state
     const { showEditMenu } = this
 
@@ -38,15 +45,16 @@ class Card extends React.Component {
 
     return (
       <React.Fragment>
-        <div>
-          Filter: <input type="text" value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
+        <div className='search-bar'>
+          <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
         </div>
+        {/* <Dropdown className='dropdown' placeholder='Choose language, framework...' multiple selection options={options} /> */}
         <ul>
             {filteredCards.map((librarys, index)=>{
               return(
                 <div>
                   <Accordion>
-                    <Accordion.Title >
+                    <Accordion.Title>
                       <Icon name='dropdown' active={activeIndex === index} index={index} onClick={this.handleClick}/>
                       <Icon name='trash alternate' onClick={() => {
                                this.props.handleDelete(librarys.id)}}/>

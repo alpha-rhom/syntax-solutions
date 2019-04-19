@@ -9,11 +9,13 @@ import {
 
 //Components
 import MainPage from './pages/MainPage'
+import Header from './Header'
 
 class AuthenticatedApp extends React.Component {
   render () {
     return (
       <React.Fragment>
+        <Header />
         <Router>
           <Route exact to="/home" render={() => (
                 <MainPage {...this.props} />
