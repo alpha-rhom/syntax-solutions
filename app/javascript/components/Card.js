@@ -45,7 +45,7 @@ class Card extends React.Component {
         <ul>
             {filteredCards.map((librarys, index)=>{
               return(
-                <div>
+                <div key={index} >
                   <Accordion>
                     <Accordion.Title >
                       <Icon 

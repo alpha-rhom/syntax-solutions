@@ -67,6 +67,7 @@ class MainPage extends React.Component {
     this.setState({
       librarys: newLibrarys
     })
+    document.elementFromPoint(1, 1).click()
   }
   //Delete cards
   handleDelete = (id) => {
