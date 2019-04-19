@@ -33,8 +33,8 @@ class Card extends React.Component {
               return(
                 <div>
                   <Accordion>
-                    <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
-                      <Icon name='dropdown' />
+                    <Accordion.Title >
+                      <Icon name='dropdown' active={activeIndex === 0} index={0} onClick={this.handleClick}/>
                       <Icon name='trash alternate' onClick={() => {
                                this.props.handleDelete(librarys.id)}}/>
                       <UpdateCard handleUpdate={this.props.handleUpdate} libraryId={librarys.id}/>

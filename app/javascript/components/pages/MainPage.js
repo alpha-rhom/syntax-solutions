@@ -6,6 +6,7 @@ import { allLibrarys } from '../data/librarys'
 
 //components
 import Card from "../Card"
+import NewCard from "../NewCard"
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -16,6 +17,19 @@ class MainPage extends React.Component {
     this.getLibrarys()
   }
 
+  createLibrary = (library) => {
+    return fetch('http://localhost:3000/libraries', {
+      body: JSON.stringify({library}),  // <- we need to stringify the json for fetch
+      headers: {  // <- We specify that we're sending JSON, and expect JSON back
+        'Content-Type': 'application/json'
+      },
+      method: "POST"  // <- Here's our verb, so the correct endpoint is invoked on the server
+    })
+    .then((response) => {
+        this.updateLibrary(library)
+      })
+    }
+  
   //Updates state with librarys
   getLibrarys = ()=>{
     allLibrarys()
@@ -50,7 +64,7 @@ class MainPage extends React.Component {
       librarys: newLibrarys
     })
   }
-
+  //Delete cards
   handleDelete = (id) => {
     fetch(`http://localhost:3000/libraries/${id}`,
     {
@@ -73,12 +87,13 @@ class MainPage extends React.Component {
   render () {
 
     const { activeIndex, librarys } = this.state
-    const{ handleUpdate, handleDelete } = this
+    const{ handleUpdate, handleDelete, createLibrary } = this
 
     return (
       <React.Fragment>
         {console.log(librarys)}
-        <Card librarys={librarys} handleUpdate={handleUpdate} handleDelete={handleDelete}/>
+        <Card librarys={librarys} handleUpdate={handleUpdate} handleDelete={handleDelete} />
+        <NewCard createLibrary={createLibrary} />
       </React.Fragment>
     );
   }
