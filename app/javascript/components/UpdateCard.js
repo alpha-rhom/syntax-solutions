@@ -10,7 +10,8 @@ class UpdateCard extends React.Component {
       form: {
         title: '',
         desc: '',
-        markdown: ''
+        markdown: '',
+        likes: this.props.likes
       },
       libraryId: this.props.libraryId
     }
@@ -27,7 +28,8 @@ class UpdateCard extends React.Component {
     let desc = this.state.form.desc
     let markdown = this.state.form.markdown
     let id = this.state.libraryId
-    let library = {id: id, title: title, desc: desc,  markdown:  markdown}
+    let likes = this.state.form.likes
+    let library = {id: id, title: title, desc: desc,  markdown:  markdown, likes: likes}
     this.props.handleUpdate(library)
   }
 
