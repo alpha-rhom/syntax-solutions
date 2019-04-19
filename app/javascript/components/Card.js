@@ -4,6 +4,7 @@ import { Accordion, Icon, Form, Button, Modal } from 'semantic-ui-react'
 
 //components
 import UpdateCard from "./UpdateCard"
+import LikeUnlike from "./LikeUnlike"
 
 class Card extends React.Component {
   constructor(props){
@@ -47,17 +48,33 @@ class Card extends React.Component {
                 <div>
                   <Accordion>
                     <Accordion.Title >
-                      <Icon name='dropdown' active={activeIndex === index} index={index} onClick={this.handleClick}/>
-                      <Icon name='trash alternate' onClick={() => {
-                               this.props.handleDelete(librarys.id)}}/>
-                      <UpdateCard handleUpdate={this.props.handleUpdate} libraryId={librarys.id}/>
-                      Title: {librarys.title}
+                      <Icon 
+                        name='dropdown'
+                        active={activeIndex === index}
+                        index={index} 
+                        onClick={this.handleClick}
+                      />
+                      <Icon name='trash alternate' 
+                          onClick={() => {
+                               this.props.handleDelete(librarys.id)}}
+                      />
+                      <UpdateCard 
+                        handleUpdate={this.props.handleUpdate} 
+                        libraryId={librarys.id}
+                        likes={librarys.likes}
+                      />
+                        Title: {librarys.title} Likes: {librarys.likes}
+                      <LikeUnlike 
+                        handleUpdate={this.props.handleUpdate} 
+                        libraryId={librarys.id} 
+                        librarys={librarys}
+                      />
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === index}>
-                    Description: <br></br>
-                    {librarys.desc} <br></br>
-                    Markdown: <br></br>
-                    {librarys.markdown}
+                        Description: <br></br>
+                        {librarys.desc} <br></br>
+                        Markdown: <br></br>
+                        {librarys.markdown}
                     </Accordion.Content>
                   </Accordion>
                 </div>
