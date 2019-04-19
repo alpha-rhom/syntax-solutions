@@ -27,17 +27,8 @@ class LibrariesController < ActionController::API
   # POST /libraries
   # POST /libraries.json
   def create
-    @library = Library.new(library_params)
-
-    respond_to do |format|
-      if @library.save
-        format.html { redirect_to @library, notice: 'Library was successfully created.' }
-        format.json { render :show, status: :created, location: @library }
-      else
-        format.html { render :new }
-        format.json { render json: @library.errors, status: :unprocessable_entity }
-      end
-    end
+    @library = current_user.libraries.create(library_params)
+    render json: @library
   end
 
   # PATCH/PUT /libraries/1
