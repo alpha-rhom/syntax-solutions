@@ -8,9 +8,9 @@ class UpdateCard extends React.Component {
     this.handleEdit = this.handleEdit.bind(this)
     this.state = {
       form: {
-        title: '',
-        desc: '',
-        markdown: '',
+        title: this.props.librarys.title,
+        desc: this.props.librarys.desc,
+        markdown: this.props.librarys.markdown,
         likes: this.props.likes
       },
       libraryId: this.props.libraryId
@@ -31,26 +31,45 @@ class UpdateCard extends React.Component {
     let likes = this.state.form.likes
     let library = {id: id, title: title, desc: desc,  markdown:  markdown, likes: likes}
     this.props.handleUpdate(library)
+    document.elementFromPoint(1, 1).click()
   }
 
   render () {
+
+    const { title, desc, markdown } = this.state.form
+
     return (
       <React.Fragment>
-        <Modal trigger={<Icon name='edit' />}>
+        <Modal trigger={<Icon name='edit' />} >
           <Modal.Header>Update Card</Modal.Header>
           <Modal.Content >
               <Form>
                 <Form.Field>
                   <label>Title</label>
-                  <input  name="title" placeholder='Title' onChange={this.handleChange.bind(this)} />
+                  <input
+                      name="title" 
+                      placeholder='Title' 
+                      value={title} 
+                      onChange={this.handleChange.bind(this)} 
+                  />
                 </Form.Field>
                 <Form.Field>
                   <label>Description</label>
-                  <input  name="desc" placeholder='Description' onChange={this.handleChange.bind(this)} />
+                  <input
+                      name="desc"
+                      placeholder='Description'
+                      value={desc}
+                      onChange={this.handleChange.bind(this)}
+                  />
                 </Form.Field>
                 <Form.Field>
                   <label>Markdown</label>
-                  <input  name="markdown" placeholder='Markdown' onChange={this.handleChange.bind(this)}/>
+                  <input
+                      name="markdown"
+                      placeholder='Markdown'
+                      value={markdown}
+                      onChange={this.handleChange.bind(this)}
+                  />
                 </Form.Field>
                 <Button type='submit' onClick={this.handleEdit}>Submit</Button>
               </Form>
