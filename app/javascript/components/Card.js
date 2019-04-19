@@ -42,7 +42,7 @@ class Card extends React.Component {
           Filter: <input type="text" value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
         </div>
         <ul>
-            {filteredCards.map((librarys)=>{
+            {filteredCards.map((librarys, index)=>{
               return(
                 <div>
                   <Accordion>
