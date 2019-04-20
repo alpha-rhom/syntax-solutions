@@ -22,6 +22,7 @@
 	width: 100%;
 }
 
+// make header responsive
 @media (min-width: 960px) {
 	.container {
 		margin: 0 auto;
@@ -91,19 +92,24 @@
 
 // search bar 
 .search-bar {
-	width: 400px;
-	margin: 0 auto;
+	padding: 0 15px;
 	position: absolute;
+	width: 100%;
 	top: 120px;
 	left: 0;
 	right: 0;
 }
 
-// scrolling header
-.main-header, .scroll {
-	transition: all .5s ease-in;
+// make search bar responsive
+@media (min-width: 400px) {
+	.search-bar {
+		margin: 0 auto;
+		padding: 0;
+		width: 400px;
+	}
 }
 
+// scrolling header
 .scroll .container {
 	position: fixed;
 	left: 0;
@@ -122,17 +128,13 @@
 	bottom: 0;
 }
 
-.scroll .nav {
-	position: absolute;
-}
-
 .scroll .logo {
 	margin-left: -280px;
 	position: relative;
 }
 
-.scroll .logo .text {
-	display: none;
+.scroll .logo .text path {
+	d: path("");
 }
 
 .scroll + .search-bar {
