@@ -1,12 +1,12 @@
 class LibrariesController < ActionController::API
   before_action :set_library, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /libraries
   # GET /libraries.json
   def index
     @user = User.all
     @libraries = Library.all.order(:created_at)
-
     render :json => @libraries, :include => :user
   end
 
