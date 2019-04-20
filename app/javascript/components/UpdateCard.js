@@ -31,7 +31,6 @@ class UpdateCard extends React.Component {
     let likes = this.state.form.likes
     let library = {id: id, title: title, desc: desc,  markdown:  markdown, likes: likes}
     this.props.handleUpdate(library)
-    document.elementFromPoint(1, 1).click()
   }
 
   render () {

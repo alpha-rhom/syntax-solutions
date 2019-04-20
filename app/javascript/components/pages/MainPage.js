@@ -67,6 +67,7 @@ class MainPage extends React.Component {
     this.setState({
       librarys: newLibrarys
     })
+    document.elementFromPoint(1, 1).click()
   }
   //Delete cards
   handleDelete = (id) => {
@@ -95,8 +96,14 @@ class MainPage extends React.Component {
 
     return (
       <React.Fragment>
-        <Card librarys={librarys} handleUpdate={handleUpdate} handleDelete={handleDelete} />
+        <Card
+            librarys={librarys}
+            handleUpdate={handleUpdate}
+            handleDelete={handleDelete}
+            currentUser={this.props.current_user}
+        />
         <NewCard createLibrary={createLibrary} />
+        {console.log(librarys)}
       </React.Fragment>
     );
   }

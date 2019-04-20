@@ -52,7 +52,7 @@ class Card extends React.Component {
         <ul>
             {filteredCards.map((librarys, index)=>{
               return(
-                <div>
+                <div key={index} >
                   <Accordion>
                     <Accordion.Title >
                       <Icon 
@@ -61,16 +61,28 @@ class Card extends React.Component {
                         index={index} 
                         onClick={this.handleClick}
                       />
-                      <Icon name='trash alternate' 
+
+                      { 
+                      //Trash Icon
+                      librarys.user.id === this.props.currentUser.id ? <Icon name='trash alternate' 
                           onClick={() => {
                                this.props.handleDelete(librarys.id)}}
                       />
+                      : '' 
+                      }
+
+                      { 
+                      //Update Icon
+                      librarys.user.id === this.props.currentUser.id ? 
                       <UpdateCard 
                         handleUpdate={this.props.handleUpdate} 
                         libraryId={librarys.id}
                         likes={librarys.likes}
                         librarys={librarys}
                       />
+                      : '' 
+                      }
+                      
                         Title: {librarys.title} Likes: {librarys.likes}
                       <LikeUnlike 
                         handleUpdate={this.props.handleUpdate} 
