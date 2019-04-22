@@ -55,24 +55,24 @@ class Card extends React.Component {
         </div>
 
         {this.state.whichMap === false &&
-          <div>
+          <div className="container">
             <a className="ui blue image label" onClick={this.showMyCards}>Show My Cards</a>
           </div>
         }
 
         {this.state.whichMap &&
-          <div>
+					<div className="container">
             <a className="ui blue image label" onClick={this.showMyCards}>Show All Cards</a>
           </div>
         }
 
-        <ul>
+        <ul className="accordions container">
 
         {this.state.whichMap === false &&
-          <span>
+          <div>
             {filteredCards.map((librarys, index)=>{
               return(
-                <div key={index} >
+                <div key={index}>
                   <Accordion>
                     <Accordion.Title >
                       <Icon 
@@ -118,11 +118,11 @@ class Card extends React.Component {
                 </div>
               )
             })}
-            </span>
+            </div>
         }
 
         {this.state.whichMap &&
-          <span>
+          <div>
             {user_cards.map((librarys, index)=>{
               return(
                 <div key={index} >
@@ -173,7 +173,7 @@ class Card extends React.Component {
                 </div>
               )
             })}
-            </span>
+            </div>
         }
         </ul>
       </React.Fragment>
