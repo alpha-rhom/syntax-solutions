@@ -27,7 +27,7 @@ body {
 .container {
 	margin: 0 auto;
 	position: relative;
-	width: 100%;
+	width: 90%;
 }
 
 // make header responsive
@@ -100,9 +100,8 @@ body {
 
 // search bar 
 .search-bar {
-	padding: 0 15px;
 	position: absolute;
-	width: 100%;
+	width: 90%;
 	top: 120px;
 	left: 0;
 	right: 0;
@@ -112,7 +111,6 @@ body {
 @media (min-width: 400px) {
 	.search-bar {
 		margin: 0 auto;
-		padding: 0;
 		width: 400px;
 	}
 }
@@ -166,9 +164,27 @@ margin: 0 auto;
 
 .accordion {
 	background: $card-bg;
-	box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
+	font-size: 18px;
 	padding: 15px;
+	position: relative;
 	margin-bottom: 40px;
+}
+
+.accordion .controls {
+	line-height: 18px;
+	position: absolute;
+	padding: 0.5em 0;
+	right: 15px;
+}
+
+.accordion .likes {
+	margin-right: 0.25rem;
+}
+
+.accordion .title h2 {
+	display: inline;
+	margin: 0;
 }
 
 .addcard {
@@ -181,4 +197,31 @@ margin: 0 auto;
 
 i.inverted.addcard.circular.icon:hover {
 	background-color: #5862dd !important;
+}
+
+// login page
+
+.login{
+	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: 500px;
+	text-align: center;
+	border: 2px solid black;
+	background-color: rgba(149, 156, 233, .2);
+}
+
+.signin_line{
+	padding-bottom: 5px;
+}
+
+.signin_line::after {
+	content: "";
+	display: block;
+	border-bottom: 2px solid black;
+	margin: 0 auto;
+	width: 50%;
+	padding-bottom: 5px;
 }

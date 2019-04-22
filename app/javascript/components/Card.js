@@ -45,7 +45,7 @@ class Card extends React.Component {
 
     let user_cards = this.props.librarys.filter(
       (library) => {
-        return library.user.id === this.props.currentUser.id ? library : ''
+        return library.user_id === this.props.currentUser.id ? library : ''
       })
 
     return (
@@ -74,38 +74,37 @@ class Card extends React.Component {
               return(
                 <div key={index}>
                   <Accordion>
-                    <Accordion.Title >
-                      <Icon 
-                        name='dropdown'
-                        active={activeIndex === index}
-                        index={index} 
-                        onClick={this.handleClick}
-                      />
+										<div className="controls">
+											<Icon name='trash alternate' 
+												onClick={() => {
+												this.props.handleDelete(librarys.id)}}
+												/>
 
-                        <Icon name='trash alternate' 
-                            onClick={() => {
-                                this.props.handleDelete(librarys.id)}}
-                        />
+											{
+												//Update Icon
+												librarys.user_id === this.props.currentUser.id ?
+												<UpdateCard 
+													handleUpdate={this.props.handleUpdate} 
+													libraryId={librarys.id}
+													likes={librarys.likes}
+													librarys={librarys}
+													userId={librarys.user_id}
+													/>
+												: '' 
+											}
+
+											<span class="likes">Likes: {librarys.likes}</span>
+
+											<LikeUnlike 
+												handleUpdate={this.props.handleUpdate} 
+												libraryId={librarys.id} 
+												librarys={librarys}
+												/>
+										</div>
+                    <Accordion.Title active={activeIndex === index} index={index} onClick={this.handleClick}>
+                      <Icon name='dropdown' />
                       
-                      { 
-                      //Update Icon
-                        librarys.user_id === this.props.currentUser.id ?
-                          <UpdateCard 
-                            handleUpdate={this.props.handleUpdate} 
-                            libraryId={librarys.id}
-                            likes={librarys.likes}
-                            librarys={librarys}
-                            userId={librarys.user_id}
-                          />
-                        : '' 
-                      }
-
-                        Title: {librarys.title} Likes: {librarys.likes}
-                      <LikeUnlike 
-                        handleUpdate={this.props.handleUpdate} 
-                        libraryId={librarys.id} 
-                        librarys={librarys}
-                      />
+											<h2>{librarys.title}</h2>
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === index}>
                         Description: <br></br>
@@ -127,41 +126,37 @@ class Card extends React.Component {
               return(
                 <div key={index} >
                   <Accordion>
-                    <Accordion.Title >
-                      <Icon 
-                        name='dropdown'
-                        active={activeIndex === index}
-                        index={index} 
-                        onClick={this.handleClick}
-                      />
+										<div className="controls">
+											<Icon name='trash alternate' 
+												onClick={() => {
+												this.props.handleDelete(librarys.id)}}
+												/>
 
-                      { 
-                      //Trash Icon
-                      librarys.user.id === this.props.currentUser.id ? <Icon name='trash alternate' 
-                          onClick={() => {
-                               this.props.handleDelete(librarys.id)}}
-                      />
-                      : '' 
-                      }
+											{
+												//Update Icon
+												librarys.user_id === this.props.currentUser.id ?
+												<UpdateCard 
+													handleUpdate={this.props.handleUpdate} 
+													libraryId={librarys.id}
+													likes={librarys.likes}
+													librarys={librarys}
+													userId={librarys.user_id}
+													/>
+												: '' 
+											}
 
-                      { 
-                      //Update Icon
-                      librarys.user.id === this.props.currentUser.id ? 
-                      <UpdateCard 
-                        handleUpdate={this.props.handleUpdate} 
-                        libraryId={librarys.id}
-                        likes={librarys.likes}
-                        librarys={librarys}
-                      />
-                      : '' 
-                      }
+											<span class="likes">Likes: {librarys.likes}</span>
+
+											<LikeUnlike 
+												handleUpdate={this.props.handleUpdate} 
+												libraryId={librarys.id} 
+												librarys={librarys}
+												/>
+										</div>
+                    <Accordion.Title active={activeIndex === index} index={index} onClick={this.handleClick}>
+                      <Icon name='dropdown' />
                       
-                        Title: {librarys.title} Likes: {librarys.likes}
-                      <LikeUnlike 
-                        handleUpdate={this.props.handleUpdate} 
-                        libraryId={librarys.id} 
-                        librarys={librarys}
-                      />
+											<h2>{librarys.title}</h2>
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === index}>
                         Description: <br></br>
