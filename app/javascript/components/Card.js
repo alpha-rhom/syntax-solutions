@@ -14,7 +14,7 @@ class Card extends React.Component {
       activeIndex: null,
       search: '',
       currentUser: this.props.currentUser.id,
-      sortCards: "default"
+      sortCards: "newest"
     }
   }
     updateSearch = (event) => {
@@ -37,6 +37,10 @@ class Card extends React.Component {
       this.setState({ sortCards: "popular" })
     }
 
+    toggleNewestCards = (e) => {
+      this.setState({ sortCards: "newest" })
+    }
+
   render () {
     const { activeIndex, sortCards } = this.state
     const { showEditMenu } = this
@@ -56,8 +60,8 @@ class Card extends React.Component {
       (library) => {
         return library.user_id === this.props.currentUser.id ? library : ''
       })
-    } else {
-      var filteredCards = this.props.librarys.filter(
+    } else if (sortCards === "newest"){
+      var filteredCards = librarys.sort((a, b) => b.id - a.id).filter(
         (library) => {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         })
@@ -69,7 +73,7 @@ class Card extends React.Component {
           <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
         </div>
 
-        <div className="ui buttons"><button className="ui button" onClick={this.toggleMyCards}>My Cards</button><button className="ui button" onClick={this.togglePopularCards}>Most Popular</button></div>
+        <div className="ui buttons"><button className="ui button" onClick={this.toggleMyCards}>My Cards</button><button className="ui button" onClick={this.togglePopularCards}>Most Popular</button><button className="ui button" onClick={this.toggleNewestCards}>Date</button></div>
       
         <ul className="accordions container">
             {filteredCards.map((librarys, index)=>{
@@ -95,7 +99,7 @@ class Card extends React.Component {
 												: '' 
 											}
 
-											<span class="likes">Likes: {librarys.likes}</span>
+											<span className="likes">Likes: {librarys.likes}</span>
 
 											<LikeUnlike 
 												handleUpdate={this.props.handleUpdate} 
