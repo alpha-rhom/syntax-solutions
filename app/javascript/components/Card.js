@@ -13,8 +13,7 @@ class Card extends React.Component {
     this.state = {
       activeIndex: null,
       search: '',
-      my_cards
-      whichMap: false
+      whichMap: false,
       currentUser: this.props.currentUser.id
     }
   }
@@ -29,16 +28,6 @@ class Card extends React.Component {
       const newIndex = activeIndex === index ? -1 : index
       this.setState({ activeIndex: newIndex })
     }
-
-    render () {
-    // 	const options = [
-    // 		{ key: 'css', text: 'CSS', value: 'css' },
-    // 		{ key: 'html', text: 'HTML', value: 'html' },
-    // 		{ key: 'javascript', text: 'Javascript', value: 'javascript' },
-    // 		{ key: 'rails', text: 'Rails', value: 'rails' },
-    // 		{ key: 'react', text: 'React', value: 'react' },
-    // 		{ key: 'ruby', text: 'Ruby', value: 'ruby' },
-    // 	]
 
   showMyCards = (e) => {
     this.state.whichMap === false ? this.setState({ whichMap: true }) : this.setState({ whichMap: false })
