@@ -52,23 +52,25 @@ class Card extends React.Component {
 
     // Alters the definition of filteredcards based on the user sorting cards
 
-    // Sorts cards by most popular first
+    // Sorts cards by most popular
     if (sortCards === "popular") {
       var filteredCards = librarys.sort((a, b) => b.likes - a.likes).filter(
         (library) => {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         })
-    // Sorts cards by newest first
+    // Sorts cards user's cards
     } else if (sortCards === "myCards") {
       var filteredCards = librarys.filter(
       (library) => {
         return library.user_id === this.props.currentUser.id ? library : ''
       })
+    // Sorts cards by newest
     } else if (sortCards === "newest"){
       var filteredCards = librarys.sort((a, b) => b.id - a.id).filter(
         (library) => {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         })
+    // Sorts cards by oldest
     } else if (sortCards === "oldest") {
       var filteredCards = librarys.sort((a, b) => a.id - b.id).filter(
         (library) => {
