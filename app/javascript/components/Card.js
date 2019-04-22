@@ -46,10 +46,6 @@ class Card extends React.Component {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         }
       )
-
-      console.log('user_id', filteredCards)
-      console.log('propped user_id', this.props.currentUser.id)
-      debugger
     return (
       <React.Fragment>
         <div className='search-bar'>
@@ -68,12 +64,10 @@ class Card extends React.Component {
                         onClick={this.handleClick}
                       />
 
-                    
                         <Icon name='trash alternate' 
                             onClick={() => {
                                 this.props.handleDelete(librarys.id)}}
                         />
-                        
                       
                       { 
                       //Update Icon
