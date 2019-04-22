@@ -7,7 +7,21 @@ class LibrariesController < ActionController::API
   def index
     @user = User.all
     @libraries = Library.all.order(:created_at)
+    # @comments = Comment.all
     render :json => @libraries, :include => :user
+
+    # @user = User.all
+    # @lib = Library.all.order(:created_at)
+    # @comments = Comment.all
+
+    # @libraries = {
+    #   user: @user,
+    #   libraries: @lib,
+    #   comments: @comments
+    # }
+
+    # render :json => @libraries
+
   end
 
   # GET /libraries/1

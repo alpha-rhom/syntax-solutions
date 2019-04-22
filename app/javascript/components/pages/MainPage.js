@@ -63,7 +63,6 @@ class MainPage extends React.Component {
     newLibrarys.sort(function(a, b) {
       return parseFloat(a.id) - parseFloat(b.id);
   })
-    console.log(newLibrarys[0].id)
     this.setState({
       librarys: newLibrarys
     })
@@ -103,7 +102,6 @@ class MainPage extends React.Component {
             currentUser={this.props.current_user}
         />
         <NewCard createLibrary={createLibrary} />
-        {console.log(librarys)}
       </React.Fragment>
     );
   }
