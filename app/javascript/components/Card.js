@@ -13,8 +13,8 @@ class Card extends React.Component {
     this.state = {
       activeIndex: null,
       search: '',
-      whichMap: false,
-      currentUser: this.props.currentUser.id
+      currentUser: this.props.currentUser.id,
+      sortCards: "default"
     }
   }
     updateSearch = (event) => {
@@ -28,25 +28,40 @@ class Card extends React.Component {
       const newIndex = activeIndex === index ? -1 : index
       this.setState({ activeIndex: newIndex })
     }
-
-  showMyCards = (e) => {
-    this.state.whichMap === false ? this.setState({ whichMap: true }) : this.setState({ whichMap: false })
-  }
+    
+    toggleMyCards = (e) => {
+      this.setState({ sortCards: "myCards" })
+    }
+    
+    togglePopularCards = (e) => {
+      this.setState({ sortCards: "popular" })
+    }
 
   render () {
-    const { activeIndex } = this.state
+    const { activeIndex, sortCards } = this.state
     const { showEditMenu } = this
+    const { librarys } = this.props
 
-    let filteredCards = this.props.librarys.filter(
+    // Alters the definition of filteredcards based on the user sorting cards
+
+    // Sorts cards by most popular first
+    if (sortCards === "popular") {
+      var filteredCards = librarys.sort((a, b) => b.likes - a.likes).filter(
         (library) => {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-        }
-      )
-
-    let user_cards = this.props.librarys.filter(
+        })
+    // Sorts cards by newest first
+    } else if (sortCards === "myCards") {
+      var filteredCards = librarys.filter(
       (library) => {
-        return library.user.id === this.props.currentUser.id ? library : ''
+        return library.user_id === this.props.currentUser.id ? library : ''
       })
+    } else {
+      var filteredCards = this.props.librarys.filter(
+        (library) => {
+          return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+        })
+    }
 
     return (
       <React.Fragment>
@@ -54,22 +69,9 @@ class Card extends React.Component {
           <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
         </div>
 
-        {this.state.whichMap === false &&
-          <div className="container">
-            <a className="ui blue image label" onClick={this.showMyCards}>Show My Cards</a>
-          </div>
-        }
-
-        {this.state.whichMap &&
-					<div className="container">
-            <a className="ui blue image label" onClick={this.showMyCards}>Show All Cards</a>
-          </div>
-        }
-
+        <div className="ui buttons"><button className="ui button" onClick={this.toggleMyCards}>My Cards</button><button className="ui button" onClick={this.togglePopularCards}>Most Popular</button></div>
+      
         <ul className="accordions container">
-
-        {this.state.whichMap === false &&
-          <div>
             {filteredCards.map((librarys, index)=>{
               return(
                 <div key={index}>
@@ -118,63 +120,6 @@ class Card extends React.Component {
                 </div>
               )
             })}
-            </div>
-        }
-
-        {this.state.whichMap &&
-          <div>
-            {user_cards.map((librarys, index)=>{
-              return(
-                <div key={index} >
-                  <Accordion>
-                    <Accordion.Title >
-                      <Icon 
-                        name='dropdown'
-                        active={activeIndex === index}
-                        index={index} 
-                        onClick={this.handleClick}
-                      />
-
-                      { 
-                      //Trash Icon
-                      librarys.user.id === this.props.currentUser.id ? <Icon name='trash alternate' 
-                          onClick={() => {
-                               this.props.handleDelete(librarys.id)}}
-                      />
-                      : '' 
-                      }
-
-                      { 
-                      //Update Icon
-                      librarys.user.id === this.props.currentUser.id ? 
-                      <UpdateCard 
-                        handleUpdate={this.props.handleUpdate} 
-                        libraryId={librarys.id}
-                        likes={librarys.likes}
-                        librarys={librarys}
-                      />
-                      : '' 
-                      }
-                      
-                        Title: {librarys.title} Likes: {librarys.likes}
-                      <LikeUnlike 
-                        handleUpdate={this.props.handleUpdate} 
-                        libraryId={librarys.id} 
-                        librarys={librarys}
-                      />
-                    </Accordion.Title>
-                    <Accordion.Content active={activeIndex === index}>
-                        Description: <br></br>
-                        {librarys.desc} <br></br>
-                        Markdown: <br></br>
-                        {librarys.markdown}
-                    </Accordion.Content>
-                  </Accordion>
-                </div>
-              )
-            })}
-            </div>
-        }
         </ul>
       </React.Fragment>
     );
