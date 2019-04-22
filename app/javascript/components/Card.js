@@ -13,6 +13,8 @@ class Card extends React.Component {
     this.state = {
       activeIndex: null,
       search: '',
+      my_cards
+      whichMap: false
       currentUser: this.props.currentUser.id
     }
   }
@@ -38,6 +40,11 @@ class Card extends React.Component {
     // 		{ key: 'ruby', text: 'Ruby', value: 'ruby' },
     // 	]
 
+  showMyCards = (e) => {
+    this.state.whichMap === false ? this.setState({ whichMap: true }) : this.setState({ whichMap: false })
+  }
+
+  render () {
     const { activeIndex } = this.state
     const { showEditMenu } = this
 
@@ -46,12 +53,34 @@ class Card extends React.Component {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         }
       )
+
+    let user_cards = this.props.librarys.filter(
+      (library) => {
+        return library.user.id === this.props.currentUser.id ? library : ''
+      })
+
     return (
       <React.Fragment>
         <div className='search-bar'>
           <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
         </div>
+
+        {this.state.whichMap === false &&
+          <div>
+            <a className="ui blue image label" onClick={this.showMyCards}>Show My Cards</a>
+          </div>
+        }
+
+        {this.state.whichMap &&
+          <div>
+            <a className="ui blue image label" onClick={this.showMyCards}>Show All Cards</a>
+          </div>
+        }
+
         <ul>
+
+        {this.state.whichMap === false &&
+          <span>
             {filteredCards.map((librarys, index)=>{
               return(
                 <div key={index} >
@@ -100,6 +129,63 @@ class Card extends React.Component {
                 </div>
               )
             })}
+            </span>
+        }
+
+        {this.state.whichMap &&
+          <span>
+            {user_cards.map((librarys, index)=>{
+              return(
+                <div key={index} >
+                  <Accordion>
+                    <Accordion.Title >
+                      <Icon 
+                        name='dropdown'
+                        active={activeIndex === index}
+                        index={index} 
+                        onClick={this.handleClick}
+                      />
+
+                      { 
+                      //Trash Icon
+                      librarys.user.id === this.props.currentUser.id ? <Icon name='trash alternate' 
+                          onClick={() => {
+                               this.props.handleDelete(librarys.id)}}
+                      />
+                      : '' 
+                      }
+
+                      { 
+                      //Update Icon
+                      librarys.user.id === this.props.currentUser.id ? 
+                      <UpdateCard 
+                        handleUpdate={this.props.handleUpdate} 
+                        libraryId={librarys.id}
+                        likes={librarys.likes}
+                        librarys={librarys}
+                      />
+                      : '' 
+                      }
+                      
+                        Title: {librarys.title} Likes: {librarys.likes}
+                      <LikeUnlike 
+                        handleUpdate={this.props.handleUpdate} 
+                        libraryId={librarys.id} 
+                        librarys={librarys}
+                      />
+                    </Accordion.Title>
+                    <Accordion.Content active={activeIndex === index}>
+                        Description: <br></br>
+                        {librarys.desc} <br></br>
+                        Markdown: <br></br>
+                        {librarys.markdown}
+                    </Accordion.Content>
+                  </Accordion>
+                </div>
+              )
+            })}
+            </span>
+        }
         </ul>
       </React.Fragment>
     );
