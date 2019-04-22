@@ -14,7 +14,15 @@
  *= require_self
  */
 
- @import "semantic-ui";
+@import "semantic-ui";
+
+$bg-color: #ccc;
+$card-bg: #fff;
+
+body {
+	background-color: $bg-color;
+	font: 18px/1.5 "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
 
 .container {
 	margin: 0 auto;
@@ -85,7 +93,7 @@
 .wave {
 	position: absolute;
 	bottom: 0;
-	fill: #fff; /* equal to background color */
+	fill: $bg-color; /* equal to background color */
 	left: 0;
 	right: 0;
 }
@@ -114,6 +122,7 @@
 	position: fixed;
 	left: 0;
 	right: 0;
+	z-index: 100;
 }
 
 .scroll .container::before {
@@ -140,10 +149,36 @@
 .scroll + .search-bar {
 	position: fixed;
 	top: 36px;
+	z-index: 100;
 }
 
 // drop-down bar 
 .dropdown{
 width: 300px;
 margin: 0 auto;
+}
+//accordions 
+
+.accordions {
+	list-style: none;
+	padding-left: 0;
+}
+
+.accordion {
+	background: $card-bg;
+	box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+	padding: 15px;
+	margin-bottom: 40px;
+}
+
+.addcard {
+	position:fixed;
+	bottom: 40px;
+	left: 60px;
+	font-size: 1.5em !important;
+	cursor: pointer;
+}
+
+i.inverted.addcard.circular.icon:hover {
+	background-color: #5862dd !important;
 }
