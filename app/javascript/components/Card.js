@@ -70,11 +70,11 @@ class Card extends React.Component {
         </div>
 
         <div className="ui buttons"><button className="ui button" onClick={this.toggleMyCards}>My Cards</button><button className="ui button" onClick={this.togglePopularCards}>Most Popular</button></div>
-
-        <ul>
+      
+        <ul className="accordions container">
             {filteredCards.map((librarys, index)=>{
               return(
-                <div key={index} >
+                <div key={index}>
                   <Accordion>
                     <Accordion.Title >
                       <Icon 
