@@ -34,7 +34,7 @@ class NewCard extends React.Component {
     
     return (
       <React.Fragment>
-        <Modal trigger={<Icon name='gem' />}>
+          <Modal trigger={<Icon className='addcard' circular inverted name='plus' />}>
           <Modal.Header>New Card</Modal.Header>
           <Modal.Content >
               <Form>

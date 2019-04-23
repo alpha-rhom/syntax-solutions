@@ -7,7 +7,7 @@ class LibrariesController < ActionController::API
   # GET /libraries.json
   def index
     @user = User.all
-    @libraries = Library.all.order(:created_at)
+    @libraries = Library.all.order('created_at ASC')
     # @comments = Comment.all
     # @libraries.each do |lib|
     #   puts markdown(lib.desc) 

@@ -14,7 +14,7 @@ class LikeUnlike extends React.Component {
     }
   }
 
-  handleLikeUnlike = (newLike) => {
+  handleLikeUnlike = (newLike, e) => {
     let title = this.props.librarys.title
     let desc = this.props.librarys.desc
     let markdown = this.props.librarys.markdown
@@ -22,24 +22,36 @@ class LikeUnlike extends React.Component {
     let id = this.props.libraryId
     let library = {id: id, title: title, desc: desc,  markdown:  markdown, likes: likes}
     this.props.handleUpdate(library)
+    
+    // animation
+
+    if (e.target.className.includes('thumbs')) {
+      let savedEvent = e.target
+
+      savedEvent.classList.toggle('animating');
+
+      setTimeout(() => {
+        savedEvent.classList.toggle('animating');
+      }, 1000); // same as CSS duration
+    }
   }
 
-  handleLike = () => {
+  handleLike = (e) => {
     let currentLike = typeof this.props.librarys.likes === 'number' ? this.props.librarys.likes : 0
     let newLike = currentLike + 1
-    this.handleLikeUnlike(newLike)
+    this.handleLikeUnlike(newLike, e)
   }
 
-  handleDislike = () => {
+  handleDislike = (e) => {
     let currentLike = typeof this.props.librarys.likes === 'number' ? this.props.librarys.likes : 0
     let newLike = currentLike - 1
-    this.handleLikeUnlike(newLike)
+    this.handleLikeUnlike(newLike, e)
   }
 
   render () {
     return (
       <React.Fragment>
-        <Icon name='thumbs up outline' onClick={this.handleLike}/> <Icon name='thumbs down outline' onClick={this.handleDislike} />
+        <Icon className='thumbsup' name='thumbs up outline' onClick={this.handleLike}/><Icon className='thumbsdown' name='thumbs down outline' onClick={this.handleDislike} />
       </React.Fragment>
     );
   }
