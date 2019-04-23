@@ -50,6 +50,7 @@ class Card extends React.Component {
   render () {
     const { activeIndex, sortCards } = this.state
     const { showEditMenu } = this
+
     const { librarys } = this.props
 
     // Alters the definition of filteredcards based on the user sorting cards
@@ -162,13 +163,22 @@ class Card extends React.Component {
                     <Accordion.Content active={activeIndex === index}>
                       Description: <br></br>
                         {librarys.desc} <br></br>
-                      Markdown: <br></br>
-                      <AceEditor
+
+                        Markdown: <br></br>
+                        {librarys.markdown}
+                         <AceEditor
                         value={librarys.markdown}
                         readOnly={true}
                         showGutter={false}
                         theme="github"/>
-                        <Comments />
+                        <Comments
+                          comments={librarys.comments}
+                          librarys={librarys}
+                          libraryId={librarys.id}
+                          createComment={this.props.createComment}
+                          currentUserId={this.props.currentUser.id}
+                        />
+
                     </Accordion.Content>
                   </Accordion>
                 </div>
