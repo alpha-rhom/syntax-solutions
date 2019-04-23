@@ -86,14 +86,12 @@ class Card extends React.Component {
 
 
         <div className="container center">
-          <div className="ui buttons"><button className="ui button" onClick={this.toggleMyCards}>My Cards</button><button className="ui button" onClick={this.togglePopularCards}>Most Popular</button></div>
-
-        <div className="ui buttons">
-          <button className="ui button" onClick={this.toggleMyCards}>My Cards</button>
-          <button className="ui button" onClick={this.togglePopularCards}>Most Popular</button>
-          <button className="ui button" onClick={this.toggleNewestCards}>Newest</button>
-          <button className="ui button" onClick={this.toggleOldestCards}>Oldest</button>
-
+          <div className="ui buttons">
+            <button className="ui button" onClick={this.toggleMyCards}>My Cards</button>
+            <button className="ui button" onClick={this.togglePopularCards}>Most Popular</button>
+            <button className="ui button" onClick={this.toggleNewestCards}>Newest</button>
+            <button className="ui button" onClick={this.toggleOldestCards}>Oldest</button>
+          </div>
         </div>
       
         <ul className="accordions container">
