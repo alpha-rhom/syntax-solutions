@@ -1,6 +1,7 @@
 class LibrariesController < ActionController::API
   before_action :set_library, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  include ApplicationHelper
 
   # GET /libraries
   # GET /libraries.json
@@ -8,10 +9,13 @@ class LibrariesController < ActionController::API
     @user = User.all
     @libraries = Library.all.order(:created_at)
     # @comments = Comment.all
+    # @libraries.each do |lib|
+    #   puts markdown(lib.desc) 
+    # end
     render :json => @libraries, :include => :user
 
     # @user = User.all
-    # @lib = Library.all.order(:created_at)
+    # @lib = Library.all.order(:created_at) 
     # @comments = Comment.all
 
     # @libraries = {
@@ -27,6 +31,7 @@ class LibrariesController < ActionController::API
   # GET /libraries/1
   # GET /libraries/1.json
   def show
+    @libraries = libraries.find(params[:id])
   end
 
   # GET /libraries/new

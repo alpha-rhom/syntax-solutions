@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Accordion, Icon, Input, Form, Button, Modal, Dropdown } from 'semantic-ui-react'
+import AceEditor from "react-ace";
+import brace from "brace";
 
 //components
 import UpdateCard from "./UpdateCard"
@@ -28,7 +30,8 @@ class Card extends React.Component {
       this.setState({ activeIndex: newIndex })
     }
 
-    render () {
+  render() {
+      
     // 	const options = [
     // 		{ key: 'css', text: 'CSS', value: 'css' },
     // 		{ key: 'html', text: 'HTML', value: 'html' },
@@ -90,10 +93,14 @@ class Card extends React.Component {
                       />
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === index}>
-                        Description: <br></br>
+                      Description: <br></br>
                         {librarys.desc} <br></br>
-                        Markdown: <br></br>
-                        {librarys.markdown}
+                      Markdown: <br></br>
+                      <AceEditor
+                        value={librarys.markdown}
+                        readOnly={true}
+                        showGutter={false}
+                        theme="github"/>
                         <Comments />
                     </Accordion.Content>
                   </Accordion>
