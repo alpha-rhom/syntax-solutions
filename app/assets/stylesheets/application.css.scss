@@ -291,26 +291,32 @@ margin: 0 auto;
 }
 
 // thumbsup/thumbsdown
-.animating.thumbsup::after, .animating .thumbsdown::after {
+.animating {
+	position: relative;
+}
+
+.animating.thumbsup::after, .animating.thumbsdown::after {
 	font-size: 100px;
 	font-weight: 900;
 	pointer-events: none;
 	position: absolute;
 	opacity: 0;
-	top: -100px;
-	right: -50px; 
+
+	right: -50px;
 }
 
 .animating.thumbsup::after {
 	animation: wobble-up 1s ease-out;
-	color: #5862dd;
+	color: #0063c4;
 	content: "\f164";
+	font-family: 'Icons'; // solid version of icon
 }
 
 .animating.thumbsdown::after {
 	animation: wobble-down 1s ease-in;
-	color: #777;
+	color: #db2828;
 	content: "\f165";
+	font-family: 'Icons'; // solid version of icon
 }
 
 @keyframes wobble-up {
@@ -328,12 +334,12 @@ margin: 0 auto;
 	/* make the icon invisible while animating upwards */
 	0% {
 		opacity: 1;
-		top: -100px;
+		top: -75px;
 	}
 	
 	100% {
 		opacity: 0;
-		top: -200px;
+		top: -175px;
 	}
 }
 
@@ -352,12 +358,12 @@ margin: 0 auto;
 	/* make the icon invisible while animating downwards */
 	0% {
 		opacity: 1;
-		top: -200px;
+		top: -175px;
 	}
 	
 	100% {
 		opacity: 0;
-		top: -100px;
+		top: -75px;
 	}
 }
 
@@ -387,9 +393,22 @@ i.inverted.addcard.circular.icon:hover {
 	border: 2px solid black;
 	background: linear-gradient(135deg, #7d97de 0%, #5862dd 25%, #0b63c3 100%);
 }
+
+.login a, .signin a {
+	color: #fff;
+}
+
+.login label, .signin label {
+	display: inline;
+	vertical-align: middle;
+}
+
 input[type="text"], input[type="email"], input[type="search"], input[type="password"]{
-	padding: 7px;
-  width: 300px;
+	padding: 10px 7px;
+	width: 300px;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 10px 30px -12px #000;
 }
 
 .signin_line{
