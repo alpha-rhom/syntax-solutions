@@ -105,6 +105,7 @@ body {
 
 // search bar 
 .search-bar {
+	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
 	position: absolute;
 	width: 90%;
 	top: 120px;
@@ -390,8 +391,11 @@ i.inverted.addcard.circular.icon:hover {
 	transform: translate(-50%,-50%);
 	width: 500px;
 	text-align: center;
-	border: 2px solid black;
-	background: linear-gradient(135deg, #7d97de 0%, #5862dd 25%, #0b63c3 100%);
+	background: #959ce9 radial-gradient(circle at 0% -50%, #959ce9 12.18%,#5862dd 74.53%);
+	position: relative;
+	border-radius: 17px;
+	padding-bottom:12px;
+	padding-top: 12px;
 }
 
 .login a, .signin a {
