@@ -26,15 +26,13 @@ class LikeUnlike extends React.Component {
     // animation
 
     if (e.target.className.includes('thumbs')) {
-      e.target.classList.toggle('animating');
+      let savedEvent = e.target
 
-      // setTimeout(
-      //   function() {
-      //     e.target.classList.toggle('animating');
-      //   }
-      //   .bind(this),
-      //   800
-      // );
+      savedEvent.classList.toggle('animating');
+
+      setTimeout(() => {
+        savedEvent.classList.toggle('animating');
+      }, 1000); // same as CSS duration
     }
   }
 
