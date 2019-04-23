@@ -5,8 +5,13 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-<i aria-hidden="true" class="mail icon"></i>
-	<%= f.email_field :email, autofocus: true, autocomplete: "email",  placeholder: "Email"%>
+  <i aria-hidden="true" class="user icon"></i>
+  <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name",  placeholder: "Username"%>
+  </div>
+
+  <div class="field">
+  <i aria-hidden="true" class="mail icon"></i>
+	<%= f.email_field :email, autocomplete: "email",  placeholder: "Email"%>
   </div>
 
   <div class="field">
