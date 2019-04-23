@@ -89,7 +89,6 @@ class MainPage extends React.Component {
     
     const { activeIndex, librarys } = this.state
     const{ handleUpdate, handleDelete, createLibrary } = this
-    console.log(librarys);
     
     return (
       <React.Fragment>

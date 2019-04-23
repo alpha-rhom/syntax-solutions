@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import { Accordion, Icon, Input, Form, Button, Modal, Dropdown } from 'semantic-ui-react'
 import AceEditor from "react-ace";
 import brace from "brace";
+import 'brace/mode/javascript';
+import 'brace/theme/github';
 
 //components
 import UpdateCard from "./UpdateCard"
@@ -160,15 +162,28 @@ class Card extends React.Component {
 											<h2>{librarys.title}</h2>
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === index}>
-                      Description: <br></br>
-                        {librarys.desc} <br></br>
-                      Markdown: <br></br>
-                      <AceEditor
-                        value={librarys.markdown}
-                        readOnly={true}
-                        showGutter={false}
-                        theme="github"/>
-                        <Comments />
+											<p>{librarys.desc}</p>
+
+                      
+
+											<AceEditor
+												mode="javascript"
+												theme="github"
+												fontSize={14}
+												showPrintMargin={false}
+												showGutter={true}
+												highlightActiveLine={false}
+												readOnly={true}
+												value={librarys.markdown}
+												setOptions={{
+												showLineNumbers: true,
+												tabSize: 2,
+												}}
+												editorProps={{
+													$blockScrolling: Infinity
+												}}
+												/>
+											<Comments />
                     </Accordion.Content>
                   </Accordion>
                 </div>
