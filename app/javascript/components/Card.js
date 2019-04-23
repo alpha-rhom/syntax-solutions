@@ -102,7 +102,7 @@ class Card extends React.Component {
             {filteredCards.map((librarys, index)=>{
               return(
                 <div key={index}>
-                  <Accordion>
+                  <Accordion className={ activeIndex === index ? "active" : "" }>
 										<div className="controls">
                       <i className="btn-trash" onClick={() => {this.props.handleDelete(librarys.id)}}>
                         <svg className="oscar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 52">

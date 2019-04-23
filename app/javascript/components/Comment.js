@@ -39,7 +39,7 @@ class Comments extends React.Component {
                     return(
                         <Comment key={index}>
                           <Comment.Content>
-                            <Comment.Author as='a'>Matt</Comment.Author>
+                            <Comment.Author>Matt</Comment.Author>
                             <Comment.Metadata>
                               <time dateTime={moment(comment.created_at).format('YYYY-MM-DD HH:mm:ss')} title={moment(comment.created_at).format('dddd, MMMM Do YYYY, h:mma')}>{moment(comment.created_at).fromNow()}</time>
                             </Comment.Metadata>
