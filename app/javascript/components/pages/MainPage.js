@@ -86,10 +86,11 @@ class MainPage extends React.Component {
   }
 
   render () {
-
+    
     const { activeIndex, librarys } = this.state
     const{ handleUpdate, handleDelete, createLibrary } = this
-
+    console.log(librarys);
+    
     return (
       <React.Fragment>
         <Card

@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Accordion, Icon, Input, Form, Button, Modal, Dropdown } from 'semantic-ui-react'
+import AceEditor from "react-ace";
+import brace from "brace";
 
 //components
 import UpdateCard from "./UpdateCard"
@@ -36,7 +38,7 @@ class Card extends React.Component {
     togglePopularCards = (e) => {
       this.setState({ sortCards: "popular" })
     }
-
+    
     toggleNewestCards = (e) => {
       this.setState({ sortCards: "newest" })
     }
@@ -158,10 +160,14 @@ class Card extends React.Component {
 											<h2>{librarys.title}</h2>
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === index}>
-                        Description: <br></br>
+                      Description: <br></br>
                         {librarys.desc} <br></br>
-                        Markdown: <br></br>
-                        {librarys.markdown}
+                      Markdown: <br></br>
+                      <AceEditor
+                        value={librarys.markdown}
+                        readOnly={true}
+                        showGutter={false}
+                        theme="github"/>
                         <Comments />
                     </Accordion.Content>
                   </Accordion>
