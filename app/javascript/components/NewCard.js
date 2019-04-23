@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Form, Button, Modal, Icon } from 'semantic-ui-react'
+import AceEditor from "react-ace";
+import brace from "brace";
 
 class NewCard extends React.Component {
   constructor(props) {
@@ -32,7 +34,7 @@ class NewCard extends React.Component {
     
     return (
       <React.Fragment>
-        <Modal trigger={<Icon name='gem' />}>
+          <Modal trigger={<Icon className='addcard' circular inverted name='plus' />}>
           <Modal.Header>New Card</Modal.Header>
           <Modal.Content >
               <Form>
@@ -46,7 +48,12 @@ class NewCard extends React.Component {
                 </Form.Field>
                 <Form.Field>
                   <label>Markdown</label>
-                  <input  name="markdown" placeholder='Markdown' onChange={this.handleChange.bind(this)}/>
+                <textarea name="markdown" placeholder='Markdown' onChange={this.handleChange.bind(this)}></textarea>
+                <AceEditor
+                  showGutter={false}
+                  theme="github"
+                  highlightActiveLine={false}
+                  onChange={this.handleChange.bind(this)}/>
                 </Form.Field>
                 <Button type='submit' onClick={submitForm}>Submit</Button>
               </Form>

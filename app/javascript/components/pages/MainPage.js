@@ -19,11 +19,11 @@ class MainPage extends React.Component {
 
   createLibrary = (library) => {
     return fetch('http://localhost:3000/libraries', {
-      body: JSON.stringify({library}),  // <- we need to stringify the json for fetch
-      headers: {  // <- We specify that we're sending JSON, and expect JSON back
+      body: JSON.stringify({library}),
+      headers: {
         'Content-Type': 'application/json'
       },
-      method: "POST"  // <- Here's our verb, so the correct endpoint is invoked on the server
+      method: "POST"
     })
     .then((response) => {
         this.updateLibrary(library)
@@ -59,10 +59,7 @@ class MainPage extends React.Component {
   
   updateLibrary(library){
     let newLibrarys = this.state.librarys.filter((f) => f.id !== library.id)
-    newLibrarys.push(library)
-    newLibrarys.sort(function(a, b) {
-      return parseFloat(a.id) - parseFloat(b.id);
-  })
+    newLibrarys.unshift(library)
     this.setState({
       librarys: newLibrarys
     })
@@ -111,10 +108,11 @@ class MainPage extends React.Component {
   }
 
   render () {
-
+    
     const { activeIndex, librarys } = this.state
     const{ handleUpdate, handleDelete, createLibrary } = this
-
+    console.log(librarys);
+    
     return (
       <React.Fragment>
         <Card

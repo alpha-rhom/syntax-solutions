@@ -41,7 +41,7 @@ class Header extends React.Component{
 				<header className="main-header">
 					<div className="container">
 						<div className="nav">
-							<a href="#"><Icon circular inverted name='log out' /> Logout</a>
+							<a rel="nofollow" data-method="delete" href="/users/sign_out"><Icon circular inverted name='log out' /> Logout</a>
 						</div>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 832 203" className="logo">
 							<circle cx="101.5" cy="101.5" r="101.5" className="emblem-bg" />

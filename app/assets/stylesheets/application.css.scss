@@ -14,14 +14,28 @@
  *= require_self
  */
 
- @import "semantic-ui";
+@import "semantic-ui";
+
+:root {
+  --dur: 1s;
+  --timing: ease;
+}
+
+$bg-color: #ccc;
+$card-bg: #fff;
+
+body {
+	background-color: $bg-color;
+	font: 18px/1.5 "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
 
 .container {
 	margin: 0 auto;
 	position: relative;
-	width: 100%;
+	width: 90%;
 }
 
+// make header responsive
 @media (min-width: 960px) {
 	.container {
 		margin: 0 auto;
@@ -84,30 +98,35 @@
 .wave {
 	position: absolute;
 	bottom: 0;
-	fill: #fff; /* equal to background color */
+	fill: $bg-color; /* equal to background color */
 	left: 0;
 	right: 0;
 }
 
 // search bar 
 .search-bar {
-	width: 400px;
-	margin: 0 auto;
+	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
 	position: absolute;
+	width: 90%;
 	top: 120px;
 	left: 0;
 	right: 0;
 }
 
-// scrolling header
-.main-header, .scroll {
-	transition: all .5s ease-in;
+// make search bar responsive
+@media (min-width: 400px) {
+	.search-bar {
+		margin: 0 auto;
+		width: 400px;
+	}
 }
 
+// scrolling header
 .scroll .container {
 	position: fixed;
 	left: 0;
 	right: 0;
+	z-index: 100;
 }
 
 .scroll .container::before {
@@ -122,26 +141,289 @@
 	bottom: 0;
 }
 
-.scroll .nav {
-	position: absolute;
-}
-
 .scroll .logo {
 	margin-left: -280px;
 	position: relative;
 }
 
-.scroll .logo .text {
-	display: none;
+.scroll .logo .text path {
+	d: path("");
 }
 
 .scroll + .search-bar {
 	position: fixed;
 	top: 36px;
+	z-index: 100;
 }
 
 // drop-down bar 
 .dropdown{
 width: 300px;
 margin: 0 auto;
+}
+//accordions 
+
+.center {
+	text-align: center;
+	padding-bottom: 25px;
+}
+
+.accordions {
+	list-style: none;
+	padding-left: 0;
+}
+
+.accordion {
+	background: $card-bg;
+	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
+	font-size: 18px;
+	padding: 15px;
+	position: relative;
+	margin-bottom: 40px;
+}
+
+.accordion .controls {
+	line-height: 18px;
+	position: absolute;
+	padding: 0.5em 0;
+	right: 15px;
+}
+
+.accordion .likes {
+	margin-right: 0.25rem;
+}
+
+.accordion .title h2 {
+	display: inline;
+	margin: 0;
+}
+
+// oscar trash can
+.oscar {
+	margin-right: 0.25rem;
+	width: 17.75px;
+	vertical-align: bottom;
+}
+
+.oscar .brow {
+  fill: none;
+}
+
+.oscar .lid {
+  stroke: #212121;
+  stroke-width: 2px;
+}
+
+.oscar .trash {
+  fill: #212121;
+}
+
+.oscar .trash line {
+	stroke: #fff;
+  stroke-width: 2px;
+}
+
+.oscar .head, .hair, .hand {
+  fill: #2cd14c;
+}
+
+.oscar .mouth {
+  fill: #120505;
+}
+
+.oscar .tongue {
+  fill: #fa3333;
+}
+
+.oscar .eye {
+  fill: #fff;
+}
+
+.oscar .pupil {
+  fill: #0a0101;
+}
+
+.oscar .brow {
+  stroke: #933d3d;
+}
+
+.oscar .hair {
+  transform-origin: center;
+  transform-box: fill-box;
+  transform: scaleX(0.8);
+  transition: transform var(--dur) var(--timing);
+}
+
+.oscar:hover .hair {
+  transform: scaleX(1);
+}
+
+.oscar .head-wrap {
+  position: relative;
+  transform: translateY(14.4px);
+  transition: transform var(--dur) var(--timing);
+}
+
+.oscar:hover .head-wrap {
+  position: relative;
+  transform: translateY(0);
+}
+
+.oscar .hand.left {
+  transform-origin: bottom left;
+  transform-box: fill-box;
+  transform: rotateZ(-90deg) translateX(-7px);
+  transition: transform var(--dur) var(--timing);
+}
+
+.oscar:hover .hand.left {
+  transform: rotateZ(0) translateX(0);
+}
+
+.oscar .hand.right {
+	transform-origin: bottom right;
+  transform-box: fill-box;
+  transform: rotateZ(90deg) translateX(7px);
+  transition: transform var(--dur) var(--timing);
+}
+
+.oscar:hover .hand.right {
+	transform: rotateZ(0) translateX(0);
+}
+
+// thumbsup/thumbsdown
+.animating {
+	position: relative;
+}
+
+.animating.thumbsup::after, .animating.thumbsdown::after {
+	font-size: 100px;
+	font-weight: 900;
+	pointer-events: none;
+	position: absolute;
+	opacity: 0;
+
+	right: -50px;
+}
+
+.animating.thumbsup::after {
+	animation: wobble-up 1s ease-out;
+	color: #0063c4;
+	content: "\f164";
+	font-family: 'Icons'; // solid version of icon
+}
+
+.animating.thumbsdown::after {
+	animation: wobble-down 1s ease-in;
+	color: #db2828;
+	content: "\f165";
+	font-family: 'Icons'; // solid version of icon
+}
+
+@keyframes wobble-up {
+	/* wobble the icon */
+	0% {
+		transform: rotateZ(15deg)
+	}
+	50% {
+		transform: rotateZ(-15deg)
+	}
+	100% {
+		transform: rotateZ(15deg)
+	}
+	
+	/* make the icon invisible while animating upwards */
+	0% {
+		opacity: 1;
+		top: -75px;
+	}
+	
+	100% {
+		opacity: 0;
+		top: -175px;
+	}
+}
+
+@keyframes wobble-down {
+	/* wobble the icon */
+	0% {
+		transform: rotateZ(-15deg)
+	}
+	50% {
+		transform: rotateZ(15deg)
+	}
+	100% {
+		transform: rotateZ(-15deg)
+	}
+	
+	/* make the icon invisible while animating downwards */
+	0% {
+		opacity: 1;
+		top: -175px;
+	}
+	
+	100% {
+		opacity: 0;
+		top: -75px;
+	}
+}
+
+// add card
+
+.addcard {
+	position:fixed;
+	bottom: 40px;
+	left: 60px;
+	font-size: 1.5em !important;
+	cursor: pointer;
+}
+
+i.inverted.addcard.circular.icon:hover {
+	background-color: #5862dd !important;
+}
+
+// login page
+.login, .signin{
+	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
+	position: absolute;
+	left: 50%;
+	top: 50%;	
+	transform: translate(-50%,-50%);
+	width: 500px;
+	text-align: center;
+	background: #959ce9 radial-gradient(circle at 0% -50%, #959ce9 12.18%,#5862dd 74.53%);
+	position: relative;
+	border-radius: 17px;
+	padding-bottom:12px;
+	padding-top: 12px;
+}
+
+.login a, .signin a {
+	color: #fff;
+}
+
+.login label, .signin label {
+	display: inline;
+	vertical-align: middle;
+}
+
+input[type="text"], input[type="email"], input[type="search"], input[type="password"]{
+	padding: 10px 7px;
+	width: 300px;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 10px 30px -12px #000;
+}
+
+.signin_line{
+	padding-bottom: 5px;
+}
+
+.signin_line::after {
+	content: "";
+	display: block;
+	border-bottom: 2px solid black;
+	margin: 0 auto;
+	width: 50%;
+	padding-bottom: 5px;
 }

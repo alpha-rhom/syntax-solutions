@@ -1,42 +1,24 @@
 class LibrariesController < ActionController::API
   before_action :set_library, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  include ApplicationHelper
 
   # GET /libraries
   # GET /libraries.json
   def index
     @user = User.all
-    @libraries = Library.all.order(:created_at)
+
+    @libraries = Library.all.order('created_at ASC')
     @comments = Comment.all
     render :json => @libraries, :include => [:user, :comments]
-    
-    # User.all.to_json(:include => [:posts, :roles])
-    # render json: tests.as_json(:include => {:questions => {:include => :subject}, :bonuses => {:include => :subject}})
-    
-    
-    # user = User.all
-    # libraries = Library.all.order(:created_at)
-    # comments = Comment.all
-    
-    # render libraries.as_json(include: :user)
-
-    # @user = User.all
-    # @lib = Library.all.order(:created_at)
-    # @comments = Comment.all
-
-    # @libraries = {
-    #   user: @user,
-    #   libraries: @lib,
-    #   comments: @comments
-    # }
-
-    # render :json => @libraries
+   
 
   end
 
   # GET /libraries/1
   # GET /libraries/1.json
   def show
+    @libraries = libraries.find(params[:id])
   end
 
   # GET /libraries/new
