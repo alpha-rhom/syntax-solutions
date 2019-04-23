@@ -10,6 +10,7 @@ import {
 //Components
 import MainPage from './pages/MainPage'
 import Header from './Header'
+import Footer from './Footer'
 
 class AuthenticatedApp extends React.Component {
   render () {
@@ -21,6 +22,7 @@ class AuthenticatedApp extends React.Component {
                 <MainPage {...this.props} />
           )}/>
         </Router>
+        <Footer />
       </React.Fragment>
     );
   }

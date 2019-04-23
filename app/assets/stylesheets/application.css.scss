@@ -1,27 +1,27 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
 
 @import "semantic-ui";
 
 :root {
-  --dur: 1s;
-  --timing: ease;
+	--dur: 1s;
+	--timing: ease;
 }
 
-$bg-color: #ccc;
+$bg-color: #eee;
 $card-bg: #fff;
 
 body {
@@ -173,8 +173,8 @@ p {
 
 // drop-down bar 
 .dropdown{
-width: 300px;
-margin: 0 auto;
+	width: 300px;
+	margin: 0 auto;
 }
 //accordions 
 
@@ -197,20 +197,25 @@ margin: 0 auto;
 
 .accordion {
 	background: $card-bg;
+	border-top: 4px solid #999;
 	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
 	font-size: 18px;
 	padding: 15px;
 	position: relative;
 	margin-bottom: 40px;
-
+	
 	.btn-trash:hover .oscar .trash, .btn-trash:hover .oscar .lid {
 		fill: #5862dd;
 		stroke: #5862dd;
 	}
-
+	
 	i:hover {
 		color: #5862dd;
 	}
+}
+
+.accordion.active {
+	border-top: 4px solid #5862dd;
 }
 
 .accordion .controls {
@@ -247,85 +252,85 @@ margin: 0 auto;
 }
 
 .oscar .brow {
-  fill: none;
+	fill: none;
 }
 
 .oscar .lid {
-  stroke: #212121;
-  stroke-width: 2px;
+	stroke: #212121;
+	stroke-width: 2px;
 }
 
 .oscar .trash {
-  fill: #212121;
+	fill: #212121;
 }
 
 .oscar .trash line {
 	stroke: #fff;
-  stroke-width: 2px;
+	stroke-width: 2px;
 }
 
 .oscar .head, .hair, .hand {
-  fill: #2cd14c;
+	fill: #2cd14c;
 }
 
 .oscar .mouth {
-  fill: #120505;
+	fill: #120505;
 }
 
 .oscar .tongue {
-  fill: #fa3333;
+	fill: #fa3333;
 }
 
 .oscar .eye {
-  fill: #fff;
+	fill: #fff;
 }
 
 .oscar .pupil {
-  fill: #0a0101;
+	fill: #0a0101;
 }
 
 .oscar .brow {
-  stroke: #933d3d;
+	stroke: #933d3d;
 }
 
 .oscar .hair {
-  transform-origin: center;
-  transform-box: fill-box;
-  transform: scaleX(0.8);
-  transition: transform var(--dur) var(--timing);
+	transform-origin: center;
+	transform-box: fill-box;
+	transform: scaleX(0.8);
+	transition: transform var(--dur) var(--timing);
 }
 
 .oscar:hover .hair {
-  transform: scaleX(1);
+	transform: scaleX(1);
 }
 
 .oscar .head-wrap {
-  position: relative;
-  transform: translateY(14.4px);
-  transition: transform var(--dur) var(--timing);
+	position: relative;
+	transform: translateY(14.4px);
+	transition: transform var(--dur) var(--timing);
 }
 
 .oscar:hover .head-wrap {
-  position: relative;
-  transform: translateY(0);
+	position: relative;
+	transform: translateY(0);
 }
 
 .oscar .hand.left {
-  transform-origin: bottom left;
-  transform-box: fill-box;
-  transform: rotateZ(-90deg) translateX(-7px);
-  transition: transform var(--dur) var(--timing);
+	transform-origin: bottom left;
+	transform-box: fill-box;
+	transform: rotateZ(-90deg) translateX(-7px);
+	transition: transform var(--dur) var(--timing);
 }
 
 .oscar:hover .hand.left {
-  transform: rotateZ(0) translateX(0);
+	transform: rotateZ(0) translateX(0);
 }
 
 .oscar .hand.right {
 	transform-origin: bottom right;
-  transform-box: fill-box;
-  transform: rotateZ(90deg) translateX(7px);
-  transition: transform var(--dur) var(--timing);
+	transform-box: fill-box;
+	transform: rotateZ(90deg) translateX(7px);
+	transition: transform var(--dur) var(--timing);
 }
 
 .oscar:hover .hand.right {
@@ -343,7 +348,7 @@ margin: 0 auto;
 	pointer-events: none;
 	position: absolute;
 	opacity: 0;
-
+	
 	right: -50px;
 }
 
@@ -421,7 +426,7 @@ margin: 0 auto;
 
 .addcard {
 	position:fixed;
-	bottom: 40px;
+	bottom: 50px;
 	right: 60px;
 	font-size: 1.5em !important;
 	cursor: pointer;
@@ -440,11 +445,12 @@ i.inverted.addcard.circular.icon:hover {
 	transform: translate(-50%,-50%);
 	width: 500px;
 	text-align: center;
-	background: #959ce9 radial-gradient(circle at 0% -50%, #959ce9 12.18%,#5862dd 74.53%);
+	background: #959ce9 radial-gradient( #959ce9 12.18%,#5862dd 74.53%);
 	position: relative;
 	border-radius: 17px;
 	padding-bottom:12px;
 	padding-top: 12px;
+	border-radius: 5px;
 }
 
 .login a, .signin a {
@@ -452,7 +458,7 @@ i.inverted.addcard.circular.icon:hover {
 }
 
 .actions input {
-border-radius: 10px;
+	border-radius: 10px;
 }
 
 .login label, .signin label {
@@ -479,4 +485,42 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	margin: 0 auto;
 	width: 50%;
 	padding-bottom: 5px;
+}
+
+.main-footer {
+	border-top: 4px solid #777;
+	margin: 0 auto;
+	padding-bottom: 5px;
+	text-align: center;
+	background: #aaa;
+}
+
+.main-footer .container {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.rhomb {
+	height: 100px;
+	.a{
+		fill: #ffecb8;
+	}
+
+	.b{
+		fill: #111;
+	}
+
+	.c {
+		fill: #0aff78;
+		stroke: #111;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 0.5px;
+	}
+}
+
+.copyright {
+	font-size: 16px;
+	padding-bottom: 10px;
+	color: white;
 }
