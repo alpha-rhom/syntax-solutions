@@ -16,6 +16,11 @@
 
 @import "semantic-ui";
 
+:root {
+  --dur: 1s;
+  --timing: ease;
+}
+
 $bg-color: #ccc;
 $card-bg: #fff;
 
@@ -157,6 +162,11 @@ margin: 0 auto;
 }
 //accordions 
 
+.center {
+	text-align: center;
+	padding-bottom: 25px;
+}
+
 .accordions {
 	list-style: none;
 	padding-left: 0;
@@ -187,6 +197,172 @@ margin: 0 auto;
 	margin: 0;
 }
 
+// oscar trash can
+.oscar {
+	margin-right: 0.25rem;
+	width: 17.75px;
+	vertical-align: bottom;
+}
+
+.oscar .brow {
+  fill: none;
+}
+
+.oscar .lid {
+  stroke: #212121;
+  stroke-width: 2px;
+}
+
+.oscar .trash {
+  fill: #212121;
+}
+
+.oscar .trash line {
+	stroke: #fff;
+  stroke-width: 2px;
+}
+
+.oscar .head, .hair, .hand {
+  fill: #2cd14c;
+}
+
+.oscar .mouth {
+  fill: #120505;
+}
+
+.oscar .tongue {
+  fill: #fa3333;
+}
+
+.oscar .eye {
+  fill: #fff;
+}
+
+.oscar .pupil {
+  fill: #0a0101;
+}
+
+.oscar .brow {
+  stroke: #933d3d;
+}
+
+.oscar .hair {
+  transform-origin: center;
+  transform-box: fill-box;
+  transform: scaleX(0.8);
+  transition: transform var(--dur) var(--timing);
+}
+
+.oscar:hover .hair {
+  transform: scaleX(1);
+}
+
+.oscar .head-wrap {
+  position: relative;
+  transform: translateY(14.4px);
+  transition: transform var(--dur) var(--timing);
+}
+
+.oscar:hover .head-wrap {
+  position: relative;
+  transform: translateY(0);
+}
+
+.oscar .hand.left {
+  transform-origin: bottom left;
+  transform-box: fill-box;
+  transform: rotateZ(-90deg) translateX(-7px);
+  transition: transform var(--dur) var(--timing);
+}
+
+.oscar:hover .hand.left {
+  transform: rotateZ(0) translateX(0);
+}
+
+.oscar .hand.right {
+	transform-origin: bottom right;
+  transform-box: fill-box;
+  transform: rotateZ(90deg) translateX(7px);
+  transition: transform var(--dur) var(--timing);
+}
+
+.oscar:hover .hand.right {
+	transform: rotateZ(0) translateX(0);
+}
+
+// thumbsup/thumbsdown
+.animating.thumbsup::after, .animating .thumbsdown::after {
+	font-size: 100px;
+	font-weight: 900;
+	pointer-events: none;
+	position: absolute;
+	opacity: 0;
+	top: -100px;
+	right: -50px; 
+}
+
+.animating.thumbsup::after {
+	animation: wobble-up 1s ease-out;
+	color: #5862dd;
+	content: "\f164";
+}
+
+.animating.thumbsdown::after {
+	animation: wobble-down 1s ease-in;
+	color: #777;
+	content: "\f165";
+}
+
+@keyframes wobble-up {
+	/* wobble the icon */
+	0% {
+		transform: rotateZ(15deg)
+	}
+	50% {
+		transform: rotateZ(-15deg)
+	}
+	100% {
+		transform: rotateZ(15deg)
+	}
+	
+	/* make the icon invisible while animating upwards */
+	0% {
+		opacity: 1;
+		top: -100px;
+	}
+	
+	100% {
+		opacity: 0;
+		top: -200px;
+	}
+}
+
+@keyframes wobble-down {
+	/* wobble the icon */
+	0% {
+		transform: rotateZ(-15deg)
+	}
+	50% {
+		transform: rotateZ(15deg)
+	}
+	100% {
+		transform: rotateZ(-15deg)
+	}
+	
+	/* make the icon invisible while animating downwards */
+	0% {
+		opacity: 1;
+		top: -200px;
+	}
+	
+	100% {
+		opacity: 0;
+		top: -100px;
+	}
+}
+
+// add card
+
 .addcard {
 	position:fixed;
 	bottom: 40px;
@@ -200,17 +376,20 @@ i.inverted.addcard.circular.icon:hover {
 }
 
 // login page
-
-.login{
+.login, .signin{
 	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
 	position: absolute;
 	left: 50%;
-	top: 50%;
+	top: 50%;	
 	transform: translate(-50%,-50%);
 	width: 500px;
 	text-align: center;
 	border: 2px solid black;
-	background-color: rgba(149, 156, 233, .2);
+	background: linear-gradient(135deg, #7d97de 0%, #5862dd 25%, #0b63c3 100%);
+}
+input[type="text"], input[type="email"], input[type="search"], input[type="password"]{
+	padding: 7px;
+  width: 300px;
 }
 
 .signin_line{
