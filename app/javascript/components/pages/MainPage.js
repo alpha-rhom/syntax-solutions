@@ -28,7 +28,7 @@ class MainPage extends React.Component {
     .then((response) => {
         this.updateLibrary(library)
       })
-    }
+  }
   
   //Updates state with librarys
   getLibrarys = ()=>{
@@ -85,6 +85,28 @@ class MainPage extends React.Component {
     })
   }
 
+  createComment = (comment) => {
+    return fetch('http://localhost:3000/comments', {
+      body: JSON.stringify({comment}),  // <- we need to stringify the json for fetch
+      headers: {  // <- We specify that we're sending JSON, and expect JSON back
+        'Content-Type': 'application/json'
+      },
+      method: "POST"  // <- Here's our verb, so the correct endpoint is invoked on the server
+    })
+    .then((response) => {
+        this.updateComment(comment)
+      })
+  }
+
+  updateComment(comment){
+    let updateIndex = this.state.librarys.findIndex((library) => library.id === comment.library_id)
+    let newState = this.state.librarys
+    newState[updateIndex].comments.push(comment)
+    this.setState({
+      librarys: newState
+    })
+  }
+
   render () {
     
     const { activeIndex, librarys } = this.state
@@ -97,6 +119,7 @@ class MainPage extends React.Component {
             handleUpdate={handleUpdate}
             handleDelete={handleDelete}
             currentUser={this.props.current_user}
+            createComment={this.createComment}
         />
         <NewCard createLibrary={createLibrary} />
       </React.Fragment>

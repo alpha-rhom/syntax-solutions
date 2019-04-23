@@ -21,7 +21,6 @@ class AuthenticatedApp extends React.Component {
                 <MainPage {...this.props} />
           )}/>
         </Router>
-        
       </React.Fragment>
     );
   }

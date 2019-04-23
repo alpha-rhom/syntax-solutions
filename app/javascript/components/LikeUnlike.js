@@ -10,8 +10,15 @@ class LikeUnlike extends React.Component {
         desc: this.props.librarys.desc,
         markdown: this.props.librarys.markdown,
         likes: this.props.librarys.likes
-      }
+      },
+      likeTotal: []
     }
+  }
+
+
+  componentDidMount(){
+    console.log(this.prevState)
+    this.setState((prevState) => ({ likeTotal: prevState.likeTotal }))
   }
 
   handleLikeUnlike = (newLike, e) => {
@@ -36,10 +43,16 @@ class LikeUnlike extends React.Component {
     }
   }
 
-  handleLike = (e) => {
-    let currentLike = typeof this.props.librarys.likes === 'number' ? this.props.librarys.likes : 0
-    let newLike = currentLike + 1
-    this.handleLikeUnlike(newLike, e)
+
+  handleLike = () => {
+      this.setState({likeTotal: this.state.likeTotal + 1})
+      if (this.state.likeTotal < 1) {
+      let currentLike = typeof this.props.librarys.likes === 'number' ? this.props.librarys.likes : 0
+      let newLike = currentLike + 1
+      this.handleLikeUnlike(newLike)
+      } else {
+        console.log('hello')
+      }
   }
 
   handleDislike = (e) => {
