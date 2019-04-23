@@ -40,7 +40,6 @@ class Card extends React.Component {
 
     const { activeIndex } = this.state
     const { showEditMenu } = this
-
     let filteredCards = this.props.librarys.filter(
         (library) => {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
@@ -94,7 +93,13 @@ class Card extends React.Component {
                         {librarys.desc} <br></br>
                         Markdown: <br></br>
                         {librarys.markdown}
-                        <Comments />
+                        <Comments
+                          comments={librarys.comments}
+                          librarys={librarys}
+                          libraryId={librarys.id}
+                          createComment={this.props.createComment}
+                          currentUserId={this.props.currentUser.id}
+                        />
                     </Accordion.Content>
                   </Accordion>
                 </div>

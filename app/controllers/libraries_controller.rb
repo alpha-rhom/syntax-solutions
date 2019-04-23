@@ -7,8 +7,18 @@ class LibrariesController < ActionController::API
   def index
     @user = User.all
     @libraries = Library.all.order(:created_at)
-    # @comments = Comment.all
-    render :json => @libraries, :include => :user
+    @comments = Comment.all
+    render :json => @libraries, :include => [:user, :comments]
+    
+    # User.all.to_json(:include => [:posts, :roles])
+    # render json: tests.as_json(:include => {:questions => {:include => :subject}, :bonuses => {:include => :subject}})
+    
+    
+    # user = User.all
+    # libraries = Library.all.order(:created_at)
+    # comments = Comment.all
+    
+    # render libraries.as_json(include: :user)
 
     # @user = User.all
     # @lib = Library.all.order(:created_at)
