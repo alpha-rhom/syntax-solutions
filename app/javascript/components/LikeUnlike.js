@@ -17,7 +17,6 @@ class LikeUnlike extends React.Component {
 
 
   componentDidMount(){
-    console.log(this.prevState)
     this.setState((prevState) => ({ likeTotal: prevState.likeTotal }))
   }
 
