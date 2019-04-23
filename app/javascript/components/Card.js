@@ -32,7 +32,7 @@ class Card extends React.Component {
       const newIndex = activeIndex === index ? -1 : index
       this.setState({ activeIndex: newIndex })
     }
-    
+
     toggleMyCards = (e) => {
       this.setState({ sortCards: "myCards" })
     }
@@ -52,7 +52,6 @@ class Card extends React.Component {
   render () {
     const { activeIndex, sortCards } = this.state
     const { showEditMenu } = this
-
     const { librarys } = this.props
 
     // Alters the definition of filteredcards based on the user sorting cards
@@ -92,10 +91,10 @@ class Card extends React.Component {
 
         <div className="container center">
           <div className="ui buttons">
-            <button className="ui button" onClick={this.toggleMyCards}>My Cards</button>
-            <button className="ui button" onClick={this.togglePopularCards}>Most Popular</button>
-            <button className="ui button" onClick={this.toggleNewestCards}>Newest</button>
-            <button className="ui button" onClick={this.toggleOldestCards}>Oldest</button>
+            <button className={ this.state.sortCards === "newest" ? "ui button active" : "ui button" } onClick={this.toggleNewestCards}>Newest</button>
+            <button className={ this.state.sortCards === "oldest" ? "ui button active" : "ui button" } onClick={this.toggleOldestCards}>Oldest</button>
+            <button className={ this.state.sortCards === "popular" ? "ui button active" : "ui button" } onClick={this.togglePopularCards}>Most Popular</button>
+            <button className={ this.state.sortCards === "myCards" ? "ui button active" : "ui button" } onClick={this.toggleMyCards}>My Cards</button>
           </div>
         </div>
       
@@ -105,7 +104,7 @@ class Card extends React.Component {
                 <div key={index}>
                   <Accordion>
 										<div className="controls">
-                      <i onClick={() => {this.props.handleDelete(librarys.id)}}>
+                      <i className="btn-trash" onClick={() => {this.props.handleDelete(librarys.id)}}>
                         <svg className="oscar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 52">
                           <g className="hands">
                             <path className="hand left" d="M24.88 19.84l3-1.85s1.18-.61 1.55 0S31.09 19 31.36 19.4s2.2 2.24.4 2a6.09 6.09 0 0 1-2.83-1l-1.93.6Z" />
@@ -149,7 +148,6 @@ class Card extends React.Component {
 												: '' 
 											}
 
-											<span className="likes">Likes: {librarys.likes}</span>
 
 											<LikeUnlike 
 												handleUpdate={this.props.handleUpdate} 

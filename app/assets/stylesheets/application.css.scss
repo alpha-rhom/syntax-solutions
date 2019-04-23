@@ -29,6 +29,16 @@ body {
 	font: 18px/1.5 "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
+a {
+	color: #000;
+}
+
+a:hover, a:active, a:focus {
+	background: none;
+	color: #000;
+	text-decoration: underline;
+}
+
 p {
 	font-size: 18px;
 }
@@ -38,6 +48,7 @@ p {
 	position: relative;
 	width: 90%;
 }
+
 
 // make header responsive
 @media (min-width: 960px) {
@@ -72,9 +83,9 @@ p {
 }
 
 .nav a:hover {
-	background: none;
 	color: #000;
 }
+
 
 // login icon
 .nav a:hover i {
@@ -172,6 +183,13 @@ margin: 0 auto;
 	padding-bottom: 25px;
 }
 
+.center .ui.active.button {
+	background-color: #5862dd;
+	// background-image: radial-gradient(circle at 0% -50%, #959ce9 12.18%,#5862dd 74.53%);
+	box-shadow: 0px 0px 0px 1px transparent inset;
+	color: #fff;
+}
+
 .accordions {
 	list-style: none;
 	padding-left: 0;
@@ -184,17 +202,37 @@ margin: 0 auto;
 	padding: 15px;
 	position: relative;
 	margin-bottom: 40px;
+
+	.btn-trash:hover .oscar .trash, .btn-trash:hover .oscar .lid {
+		fill: #5862dd;
+		stroke: #5862dd;
+	}
+
+	i:hover {
+		color: #5862dd;
+	}
 }
 
 .accordion .controls {
+	display: flex;
+	align-items: flex-end;
 	line-height: 18px;
 	position: absolute;
 	padding: 0.5em 0;
 	right: 15px;
 }
 
-.accordion .likes {
-	margin-right: 0.25rem;
+.accordion .controls i {
+	cursor: pointer;
+}
+
+.accordion .controls i.btn-trash {
+	margin-bottom: -1px;
+	margin-right: 0.4rem;
+}
+
+.accordion .likes span {
+	margin: 0em 0.4rem 0em 0em;
 }
 
 .accordion .title h2 {
@@ -204,7 +242,6 @@ margin: 0 auto;
 
 // oscar trash can
 .oscar {
-	margin-right: 0.25rem;
 	width: 17.75px;
 	vertical-align: bottom;
 }
@@ -377,13 +414,15 @@ margin: 0 auto;
 	height: 256px !important;
 	width: 100% !important;
 }
+//comments
+
 
 // add card
 
 .addcard {
 	position:fixed;
 	bottom: 40px;
-	left: 60px;
+	right: 60px;
 	font-size: 1.5em !important;
 	cursor: pointer;
 }
@@ -410,6 +449,10 @@ i.inverted.addcard.circular.icon:hover {
 
 .login a, .signin a {
 	color: #fff;
+}
+
+.actions input {
+border-radius: 10px;
 }
 
 .login label, .signin label {
