@@ -14,7 +14,7 @@ class Card extends React.Component {
       activeIndex: null,
       search: '',
       currentUser: this.props.currentUser.id,
-      sortCards: "default"
+      sortCards: "newest"
     }
   }
     updateSearch = (event) => {
@@ -37,6 +37,14 @@ class Card extends React.Component {
       this.setState({ sortCards: "popular" })
     }
 
+    toggleNewestCards = (e) => {
+      this.setState({ sortCards: "newest" })
+    }
+
+    toggleOldestCards = (e) => {
+      this.setState({ sortCards: "oldest" })
+    }
+
   render () {
     const { activeIndex, sortCards } = this.state
     const { showEditMenu } = this
@@ -44,20 +52,27 @@ class Card extends React.Component {
 
     // Alters the definition of filteredcards based on the user sorting cards
 
-    // Sorts cards by most popular first
+    // Sorts cards by most popular
     if (sortCards === "popular") {
       var filteredCards = librarys.sort((a, b) => b.likes - a.likes).filter(
         (library) => {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         })
-    // Sorts cards by newest first
+    // Sorts cards user's cards
     } else if (sortCards === "myCards") {
       var filteredCards = librarys.filter(
       (library) => {
         return library.user_id === this.props.currentUser.id ? library : ''
       })
-    } else {
-      var filteredCards = this.props.librarys.filter(
+    // Sorts cards by newest
+    } else if (sortCards === "newest"){
+      var filteredCards = librarys.sort((a, b) => b.id - a.id).filter(
+        (library) => {
+          return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+        })
+    // Sorts cards by oldest
+    } else if (sortCards === "oldest") {
+      var filteredCards = librarys.sort((a, b) => a.id - b.id).filter(
         (library) => {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         })
@@ -69,8 +84,16 @@ class Card extends React.Component {
           <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
         </div>
 
+
         <div className="container center">
           <div className="ui buttons"><button className="ui button" onClick={this.toggleMyCards}>My Cards</button><button className="ui button" onClick={this.togglePopularCards}>Most Popular</button></div>
+
+        <div className="ui buttons">
+          <button className="ui button" onClick={this.toggleMyCards}>My Cards</button>
+          <button className="ui button" onClick={this.togglePopularCards}>Most Popular</button>
+          <button className="ui button" onClick={this.toggleNewestCards}>Newest</button>
+          <button className="ui button" onClick={this.toggleOldestCards}>Oldest</button>
+
         </div>
       
         <ul className="accordions container">
