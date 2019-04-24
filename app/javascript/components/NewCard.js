@@ -48,12 +48,13 @@ class NewCard extends React.Component {
                 </Form.Field>
                 <Form.Field>
                   <label>Markdown</label>
-                <textarea name="markdown" placeholder='Markdown' onChange={this.handleChange.bind(this)}></textarea>
+                <textarea name="markdown" placeholder='Markdown' onChange={this.handleChange.bind(this)}>
                 <AceEditor
                   showGutter={false}
                   theme="github"
                   highlightActiveLine={false}
                   onChange={this.handleChange.bind(this)}/>
+                </textarea>
                 </Form.Field>
                 <Button type='submit' onClick={submitForm}>Submit</Button>
               </Form>
