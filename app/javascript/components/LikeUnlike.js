@@ -37,7 +37,7 @@ class LikeUnlike extends React.Component {
     }
   }
 
-
+  //hope this works
   handleLike = (e) => {
     this.state.likeTotal < 1 ? this.setState({likeTotal: this.state.likeTotal + 1}) : ''
       if (this.state.likeTotal < 1) {
