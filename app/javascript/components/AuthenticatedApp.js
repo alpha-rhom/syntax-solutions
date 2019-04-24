@@ -17,6 +17,7 @@ class AuthenticatedApp extends React.Component {
     return (
       <React.Fragment>
         <Header />
+
         <main className="site">
           <Router>
             <Route exact to="/home" render={() => (

@@ -12,7 +12,7 @@ class Comments extends React.Component {
         body: '',
         library_id: this.props.librarys.id,
         user_id: this.props.currentUserId,
-        created_at: 'Now'
+        created_at: []
       }
     }
   }
@@ -25,11 +25,11 @@ class Comments extends React.Component {
 
   submitForm = () => {
     this.props.createComment(this.state.form)
+    this.setState({form: {...this.state.form, body: '',},})
   }
-  
-   
+ 
 
-  render () {
+  render () { console.log(this.props.librarys)
     return (
       <React.Fragment>
 
@@ -43,9 +43,13 @@ class Comments extends React.Component {
                           <Comment.Content>
                             <Comment.Author>Matt</Comment.Author>
                             <Comment.Metadata>
-                              <time dateTime={moment(comment.created_at).format('YYYY-MM-DD HH:mm:ss')} title={moment(comment.created_at).format('dddd, MMMM Do YYYY, h:mma')}>{moment(comment.created_at).fromNow()}</time>
+                              {
+                                comment.created_at.length !== 0 ?
+                                <time dateTime={moment(comment.created_at).format('YYYY-MM-DD HH:mm:ss')} title={moment(comment.created_at).format('dddd, MMMM Do YYYY, h:mma')}>{moment(comment.created_at).fromNow()}</time>
+                                : 'Now'
+                                
+                              }
                             </Comment.Metadata>
-                          
                             <Comment.Text>{comment.body}</Comment.Text>
                           </Comment.Content>
                         </Comment>
@@ -60,8 +64,9 @@ class Comments extends React.Component {
               <label>Comment</label>
               <input 
                 name="body"
-                placeholder='Comment'
+                placeholder=''
                 onChange={this.handleChange.bind(this)}
+                value={this.state.form.body}
               />
             </Form.Field>
             <Button 
