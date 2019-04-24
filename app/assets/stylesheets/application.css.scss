@@ -29,8 +29,9 @@ body {
 	font: 18px/1.5 "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-// there's a random parent div otherwise this could be inside body
-body > div:first-child {
+// there's a random parent div otherwise this should be inside body
+body > [data-react-class="AuthenticatedApp"],
+body > [data-react-class="UnauthenticatedApp"] {
 	display: flex;
   flex-direction: column;
   height: 100vh;
@@ -74,6 +75,7 @@ p {
 .main-header {
 	background: #959ce9 radial-gradient(circle at 50% 300%, #959ce9 12.18%,#5862dd 74.53%);
 	height: 210px;
+	flex-shrink: 0;
 	padding-top: 20px;
 	padding-bottom: 80px; /* equal to wave SVG height */
 	position: relative;
