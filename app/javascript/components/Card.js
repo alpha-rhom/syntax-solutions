@@ -81,6 +81,7 @@ class Card extends React.Component {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         })
     }
+    console.log(filteredCards)
 
     return (
       <React.Fragment>

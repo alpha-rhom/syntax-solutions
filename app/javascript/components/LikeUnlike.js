@@ -23,8 +23,9 @@ class LikeUnlike extends React.Component {
     let markdown = this.props.librarys.markdown
     let comments = this.props.librarys.comments
     let likes = newLike
+    let user_id = this.props.librarys.user_id
     let id = this.props.libraryId
-    let library = {id: id, title: title, desc: desc,  markdown:  markdown, likes: likes, comments: comments}
+    let library = {id: id, title: title, desc: desc,  markdown:  markdown, likes: likes, comments: comments, user_id: user_id}
     this.props.handleUpdate(library)
 
     // animation
@@ -66,6 +67,7 @@ class LikeUnlike extends React.Component {
       <React.Fragment>
 
         <Icon className='thumbsup' name='thumbs up outline' onClick={this.handleLike}/>
+        {this.props.librarys.likes}
         <Icon className='thumbsdown' name='thumbs down outline' onClick={this.handleDislike} />
 
       </React.Fragment>
