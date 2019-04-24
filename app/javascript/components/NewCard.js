@@ -12,8 +12,7 @@ class NewCard extends React.Component {
       form: {
         title: '',
         desc: '',
-        markdown: '',
-        comments: []
+        markdown: ''
       }
     }
   }
