@@ -35,7 +35,7 @@ class NewCard extends React.Component {
     
     return (
       <React.Fragment>
-        <Modal trigger={<Icon name='gem' />}>
+          <Modal trigger={<Icon className='addcard' circular inverted name='plus' />}>
           <Modal.Header>New Card</Modal.Header>
           <Modal.Content >
               <Form>
@@ -48,14 +48,13 @@ class NewCard extends React.Component {
                   <input  name="desc" placeholder='Description' onChange={this.handleChange.bind(this)} />
                 </Form.Field>
                 <Form.Field>
-                <label>Markdown</label>
-                <textarea name="markdown" placeholder='Markdown' onChange={this.handleChange.bind(this)}>
+                  <label>Markdown</label>
+                <textarea name="markdown" placeholder='Markdown' onChange={this.handleChange.bind(this)}></textarea>
                 <AceEditor
                   showGutter={false}
                   theme="github"
                   highlightActiveLine={false}
                   onChange={this.handleChange.bind(this)}/>
-                </textarea>
                 </Form.Field>
                 <Button type='submit' onClick={submitForm}>Submit</Button>
               </Form>
