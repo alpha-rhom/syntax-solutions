@@ -94,6 +94,7 @@ class MainPage extends React.Component {
       method: "POST"  // <- Here's our verb, so the correct endpoint is invoked on the server
     })
     .then((response) => {
+        
         this.updateComment(comment)
       })
   }
