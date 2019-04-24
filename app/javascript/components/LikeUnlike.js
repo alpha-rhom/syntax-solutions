@@ -15,6 +15,8 @@ class LikeUnlike extends React.Component {
     }
   }
 
+
+
   handleLikeUnlike = (newLike, e) => {
     let title = this.props.librarys.title
     let desc = this.props.librarys.desc
@@ -39,12 +41,14 @@ class LikeUnlike extends React.Component {
 
 
   handleLike = (e) => {
+
     this.state.likeTotal < 1 ? this.setState({likeTotal: this.state.likeTotal + 1}) : ''
       if (this.state.likeTotal < 1) {
         let currentLike = typeof this.props.librarys.likes === 'number' ? parseInt(this.props.librarys.likes) : 0
         let newLike = currentLike + 1
         this.handleLikeUnlike(newLike, e)
       } 
+
   }
 
   handleDislike = (e) => {
@@ -60,8 +64,10 @@ class LikeUnlike extends React.Component {
   render () {
     return (
       <React.Fragment>
+
         <Icon className='thumbsup' name='thumbs up outline' onClick={this.handleLike}/>
         <Icon className='thumbsdown' name='thumbs down outline' onClick={this.handleDislike} />
+
       </React.Fragment>
     );
   }

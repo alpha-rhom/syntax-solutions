@@ -32,17 +32,18 @@ class Comments extends React.Component {
   render () {
     return (
       <React.Fragment>
+
       <Comment.Group>
+
           <Header as='h3' dividing>Comments</Header>
             { 
                 this.props.librarys.comments.map((comment, index) => {
                     return(
-                        <Comment>
+                        <Comment key={index}>
                           <Comment.Content>
-                            <Comment.Author as='a'>Matt</Comment.Author>
+                            <Comment.Author>Matt</Comment.Author>
                             <Comment.Metadata>
-                              <div>{moment(comment.created_at).format('h:mm:ss a, MMMM Do YYYY')
-                                }</div>
+                              <time dateTime={moment(comment.created_at).format('YYYY-MM-DD HH:mm:ss')} title={moment(comment.created_at).format('dddd, MMMM Do YYYY, h:mma')}>{moment(comment.created_at).fromNow()}</time>
                             </Comment.Metadata>
                           
                             <Comment.Text>{comment.body}</Comment.Text>
@@ -69,7 +70,7 @@ class Comments extends React.Component {
               onClick={this.submitForm}
             />
           </Form>
-            </Comment.Group>
+        </Comment.Group>
 
       </React.Fragment>
     );

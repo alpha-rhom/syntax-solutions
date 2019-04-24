@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import { Accordion, Icon, Input, Form, Button, Modal, Dropdown } from 'semantic-ui-react'
 import AceEditor from "react-ace";
 import brace from "brace";
+import 'brace/mode/javascript';
+import 'brace/theme/github';
 
 //components
 import UpdateCard from "./UpdateCard"
@@ -30,7 +32,7 @@ class Card extends React.Component {
       const newIndex = activeIndex === index ? -1 : index
       this.setState({ activeIndex: newIndex })
     }
-    
+
     toggleMyCards = (e) => {
       this.setState({ sortCards: "myCards" })
     }
@@ -50,7 +52,6 @@ class Card extends React.Component {
   render () {
     const { activeIndex, sortCards } = this.state
     const { showEditMenu } = this
-
     const { librarys } = this.props
 
     // Alters the definition of filteredcards based on the user sorting cards
@@ -90,10 +91,10 @@ class Card extends React.Component {
 
         <div className="container center">
           <div className="ui buttons">
-            <button className="ui button" onClick={this.toggleMyCards}>My Cards</button>
-            <button className="ui button" onClick={this.togglePopularCards}>Most Popular</button>
-            <button className="ui button" onClick={this.toggleNewestCards}>Newest</button>
-            <button className="ui button" onClick={this.toggleOldestCards}>Oldest</button>
+            <button className={ this.state.sortCards === "newest" ? "ui button active" : "ui button" } onClick={this.toggleNewestCards}>Newest</button>
+            <button className={ this.state.sortCards === "oldest" ? "ui button active" : "ui button" } onClick={this.toggleOldestCards}>Oldest</button>
+            <button className={ this.state.sortCards === "popular" ? "ui button active" : "ui button" } onClick={this.togglePopularCards}>Most Popular</button>
+            <button className={ this.state.sortCards === "myCards" ? "ui button active" : "ui button" } onClick={this.toggleMyCards}>My Cards</button>
           </div>
         </div>
       
@@ -101,8 +102,9 @@ class Card extends React.Component {
             {filteredCards.map((librarys, index)=>{
               return(
                 <div key={index}>
-                  <Accordion>
+                  <Accordion className={ activeIndex === index ? "active" : "" }>
 										<div className="controls">
+
                       { 
                         librarys.user_id === this.props.currentUser.id ?
                           <i onClick={() => {this.props.handleDelete(librarys.id)}}>
@@ -151,7 +153,6 @@ class Card extends React.Component {
 												: '' 
 											}
 
-											<span className="likes">Likes: {librarys.likes}</span>
 
 											<LikeUnlike 
 												handleUpdate={this.props.handleUpdate} 
@@ -165,24 +166,33 @@ class Card extends React.Component {
 											<h2>{librarys.title}</h2>
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === index}>
-                      Description: <br></br>
-                        {librarys.desc} <br></br>
+                      
+											<p>{librarys.desc}</p>
 
-                        Markdown: <br></br>
-                        {librarys.markdown}
-                         <AceEditor
-                        value={librarys.markdown}
-                        readOnly={true}
-                        showGutter={false}
-                        theme="github"/>
-                        <Comments
+											<AceEditor
+												mode="javascript"
+												theme="github"
+												fontSize={14}
+												showPrintMargin={false}
+												showGutter={true}
+												highlightActiveLine={false}
+												readOnly={true}
+												value={librarys.markdown}
+												setOptions={{
+												showLineNumbers: true,
+												tabSize: 2,
+												}}
+												editorProps={{
+													$blockScrolling: Infinity
+												}}
+												/>
+											<Comments
                           comments={librarys.comments}
                           librarys={librarys}
                           libraryId={librarys.id}
                           createComment={this.props.createComment}
                           currentUserId={this.props.currentUser.id}
                         />
-
                     </Accordion.Content>
                   </Accordion>
                 </div>
