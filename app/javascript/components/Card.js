@@ -88,6 +88,12 @@ class Card extends React.Component {
           <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
         </div>
 
+        { this.state.sortCards === "myCards" &&
+          <div className='search-bar'>
+            <Input fluid icon={<Icon name='search' inverted circular link />} disabled />
+          </div>
+        }
+
 
         <div className="container center">
           <div className="ui buttons">
