@@ -27,14 +27,14 @@ class Comments extends React.Component {
     this.props.createComment(this.state.form)
   }
   
+   
 
   render () {
     return (
       <React.Fragment>
-     
       <Comment.Group>
           <Header as='h3' dividing>Comments</Header>
-            {
+            { 
                 this.props.librarys.comments.map((comment, index) => {
                     return(
                         <Comment>
@@ -49,8 +49,9 @@ class Comments extends React.Component {
                           </Comment.Content>
                         </Comment>
                   )
-                }
+                } 
               )
+           
             } 
 
           <Form reply>
