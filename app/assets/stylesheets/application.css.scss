@@ -426,8 +426,12 @@ p {
 	height: 256px !important;
 	width: 100% !important;
 }
+
 //comments
 
+.comment time {
+	display: inline;
+}
 
 // add card
 
