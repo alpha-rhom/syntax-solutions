@@ -26,16 +26,32 @@ $card-bg: #fff;
 
 body {
 	background-color: $bg-color;
+	// display: flex;	
 	font: 18px/1.5 "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 // there's a random parent div otherwise this should be inside body
-body > [data-react-class="AuthenticatedApp"],
-body > [data-react-class="UnauthenticatedApp"] {
+body > [data-react-class]	 {
 	display: flex;
   flex-direction: column;
   height: 100vh;
 }
+
+// body > [data-react-class] .main-header {
+// 	order: 1;
+// }
+
+// body > [data-react-class] .site {
+// 	order: 2;
+// }
+
+// body > [data-react-class] .landing {
+// 	order: 3;
+// }
+
+// body > [data-react-class] .main-footer {
+// 	order: 4;
+// }
 
 .site {
 	flex: 1 0 auto;
@@ -450,20 +466,25 @@ i.inverted.addcard.circular.icon:hover {
 }
 
 // login page
-.login, .signin{
-	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
-	position: absolute;
-	left: 50%;
-	top: 50%;	
-	transform: translate(-50%,-50%);
-	width: 500px;
-	text-align: center;
-	background: #959ce9 radial-gradient( #959ce9 12.18%,#5862dd 74.53%);
-	position: relative;
-	border-radius: 17px;
-	padding-bottom:12px;
-	padding-top: 12px;
-	border-radius: 5px;
+.login, .signup{
+	// box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
+	// position: absolute;
+	// left: 50%;
+	// top: 50%;	
+	// transform: translate(-50%,-50%);
+	// width: 500px;
+	// text-align: center;
+	// background: #959ce9 radial-gradient( #959ce9 12.18%,#5862dd 74.53%);
+	// position: relative;
+	// border-radius: 17px;
+	// padding-bottom:12px;
+	// padding-top: 12px;
+	// border-radius: 5px;
+
+	// position: absolute;
+	// top: 250px;
+	// left: 50%;
+	// transform: translateX(-50%);
 }
 
 .login a, .signin a {
@@ -499,6 +520,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	width: 50%;
 	padding-bottom: 5px;
 }
+//footer
 
 .main-footer {
 	border-top: 4px solid #777;
@@ -507,6 +529,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	text-align: center;
 	background: #aaa;
 }
+
 .main-footer .container {
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -514,29 +537,65 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 
 .rhomb {
 	height: 100px;
+
 	.a{
-		fill: #ffecb8;
+		fill:#ffecb8
 	}
 
 	.b{
-		fill: #111;
+		fill:#111
 	}
 
-	.c {
-		fill: #0aff78;
-		stroke: #111;
-		stroke-linecap: round;
-		stroke-linejoin: round;
-		stroke-width: 0.5px;
+	.c{
+		fill:#0aff78
 	}
 }
 
-.copyright {
+.main-footer .column {
+	float: left;
+	width: 20%;
+}
+
+.main-footer .column li, .main-footer .column p {
 	font-size: 16px;
-	padding-bottom: 10px;
+}
+
+//linkedin
+.linkedin {
+	font-size: 16px;
+	color: black;
+}
+
+.linkedin ul {
+	list-style: none;
+	padding: 0;
+	text-align: left;
+}
+
+.linkedin a {
+	color: black;
+}
+
+//copyright
+.copyright {
+	clear: both;
+	font-size: 16px;
+	padding: 20px 0;
 	color: #151515;
 }
 
 .copyright p {
+	border-top: 2px solid #151515;
+	padding-top: 20px;
 	font-size: 14px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+
+// make header responsive
+@media (min-width: 960px) {
+	.copyright p {
+		width: 960px;
+	}
 }
