@@ -13,7 +13,8 @@ class NewCard extends React.Component {
         title: '',
         desc: '',
         markdown: '',
-        comments: []
+        comments: [],
+        user_id: this.props.currentUser.id
       }
     }
   }

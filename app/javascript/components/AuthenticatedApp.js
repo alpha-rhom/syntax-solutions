@@ -18,7 +18,6 @@ class AuthenticatedApp extends React.Component {
       <React.Fragment>
         <Header />
         <Router>
-          {console.log('current user', this.props.currentUser)}
           <Route exact to="/home" render={() => (
                 <MainPage {...this.props} />
           )}/>

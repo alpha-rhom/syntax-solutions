@@ -121,7 +121,10 @@ class MainPage extends React.Component {
             currentUser={this.props.current_user}
             createComment={this.createComment}
         />
-        <NewCard createLibrary={createLibrary} />
+        <NewCard 
+          createLibrary={createLibrary}
+          currentUser={this.props.current_user}
+        />
       </React.Fragment>
     );
   }

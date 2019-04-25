@@ -187,13 +187,19 @@ class Card extends React.Component {
 													$blockScrolling: Infinity
 												}}
 												/>
-											<Comments
-                          comments={librarys.comments}
-                          librarys={librarys}
-                          libraryId={librarys.id}
-                          createComment={this.props.createComment}
-                          currentUserId={this.props.currentUser.id}
-                        />
+											
+                      { librarys.id >= 0 ?
+                        <Comments
+                        comments={librarys.comments}
+                        librarys={librarys}
+                        libraryId={librarys.id}
+                        createComment={this.props.createComment}
+                        currentUserId={this.props.currentUser.id}
+                        
+                      />
+                      : ''
+                      }
+                      
                     </Accordion.Content>
                   </Accordion>
                 </div>
