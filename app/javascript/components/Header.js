@@ -5,33 +5,50 @@ import { Accordion, Icon, Input, Form, Button, Modal, Label } from 'semantic-ui-
 class Header extends React.Component{
 
 	componentDidMount() {
-		let last_known_scroll_position = 0;
-		let scrollpop = 210; // when scroll position is equal to "scrollpop" add the "scroll" class to header
-		let ticking = false;
+		const landing = document.querySelector('.landing')
+		const landingLogin = document.querySelector('.login')
+		const site = document.querySelector('.site')
 		const header = document.querySelector('.main-header')
+		const headerContainer = header.querySelector('.container')
+		const searchBar = site.querySelector('.search-bar')
 
-		function doSomething(scroll_pos) {
-			if (scroll_pos > scrollpop && header.className.includes('scroll') === false) {
-				header.classList.add('scroll')
-			} else if (scroll_pos <= scrollpop && header.className.includes('scroll') === true) {
-				header.classList.remove('scroll')
-			}
-			
-			return null;
+    if (landing && site && header) {
+			site.appendChild(landing)
+			headerContainer.appendChild(landingLogin)
+		}
+		
+		if (searchBar) {
+			headerContainer.appendChild(searchBar)
 		}
 
-		window.addEventListener('scroll', function(e) {
-			last_known_scroll_position = window.scrollY;
+		let last_known_scroll_position = 0;
+		let scrollpop = 210; // when vertical scroll position is equal to "scrollpop" add the "scroll" class to header
+		let ticking = false;
 
-			if (!ticking) {
-				window.requestAnimationFrame(function() {
-					doSomething(last_known_scroll_position);
-					ticking = false;
-				});
-
-				ticking = true;
+		if (!landing) {
+			function doSomething(scroll_pos) {
+				if (scroll_pos > scrollpop && header.className.includes('scroll') === false) {
+					header.classList.add('scroll')
+				} else if (scroll_pos <= scrollpop && header.className.includes('scroll') === true) {
+					header.classList.remove('scroll')
+				}
+				
+				return null;
 			}
-		});
+	
+			window.addEventListener('scroll', function(e) {
+				last_known_scroll_position = window.scrollY;
+	
+				if (!ticking) {
+					window.requestAnimationFrame(function() {
+						doSomething(last_known_scroll_position);
+						ticking = false;
+					});
+	
+					ticking = true;
+				}
+			});
+		}
 	}
 
 	render() {

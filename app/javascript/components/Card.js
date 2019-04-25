@@ -81,20 +81,17 @@ class Card extends React.Component {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         })
     }
-    console.log(filteredCards)
-
     return (
       <React.Fragment>
-        <div className='search-bar'>
-          <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
-        </div>
-
-        { this.state.sortCards === "myCards" &&
+        { this.state.sortCards !== "myCards" &&
           <div className='search-bar'>
-            <Input fluid icon={<Icon name='search' inverted circular link />} disabled />
+            <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
+          </div>
+          ||
+          <div className='search-bar'>
+            <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" disabled />
           </div>
         }
-
 
         <div className="container center">
           <div className="ui buttons">
@@ -114,7 +111,7 @@ class Card extends React.Component {
 
                       { 
                         librarys.user_id === this.props.currentUser.id ?
-                          <i onClick={() => {this.props.handleDelete(librarys.id)}}>
+                          <i onClick={() => {this.props.handleDelete(librarys.id)}} className="btn-trash">
                             <svg className="oscar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 52">
                               <g className="hands">
                                 <path className="hand left" d="M24.88 19.84l3-1.85s1.18-.61 1.55 0S31.09 19 31.36 19.4s2.2 2.24.4 2a6.09 6.09 0 0 1-2.83-1l-1.93.6Z" />

@@ -1,50 +1,78 @@
 <%= react_component('UnauthenticatedApp') %>
 
-<div class="landing">
-  <!-- Log in -->
-  <div class="login">
-    <p>Log In</p>
-    <%= form_for(:user, :url => session_path(:user)) do |f| %>
-      <div class="field">
-        <%= f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
-      </div>
-      <div class="field">
-        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
-      </div>
-      
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-      
-      <div class="actions">
-        <%= f.submit 'Log in' %>
-      </div>
+<!-- Log in -->
+<div class="login">
+  <%= form_for(:user, :url => session_path(:user)) do |f| %>
+    <div class="ui left icon input">
+      <i aria-hidden="true" class="mail icon"></i>
+      <%= f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+    </div>
+		<div class="ui left icon input">
+			<i aria-hidden="true" class="lock icon"></i>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit "Login", class: "ui primary button" %>
+    </div>
+    
+    <div class="memory">
+			<div class="ui checkbox"><%= f.check_box :remember_me, class: "hidden" %><%= f.label :remember_me %></div><br />
       <%= link_to "Forgot your password?", new_password_path(:user) %>
-    <% end %>
-  </div>
-  <!-- End of Log in -->
+    </div>
+  <% end %>
+</div>
+<!-- End of Log in -->
 
-  <!-- Sign Up -->
-  <div class="signup">
-    <h2>Sign up</h2>
-
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
-
-      <div class="field">
-      <%= f.text_field :user_name, autocomplete: "user_name",  placeholder: "Username"%>
+<div class="landing container">
+  <div class="ui stackable very relaxed two column grid">
+    <div class="column">
+        <!-- About -->
+        <div class="about">
+					<h2>Syntax Solutions</h2>
+					<h3>Understanding coding solutions the simple way.</h3>
+					<p>We, as students at a coding bootcamp, were inspired to create this site to help save ourselves the hours we were pouring into searching the web to try to solve the syntax errors that were keeping us from progessing.</p>
+					<p> As a group we wanted to create a site that was simple and easy to digest the definitions as well as coding examples to better grasp the idea and or concept as well as serve those who visually learn.</p>
+        </div>
+        <!-- End of About -->
+    </div>
+    <div class="middle aligned column">
+      <!-- Sign Up -->
+      <div class="signup">
+        <h2>Signup</h2>
+    
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+    
+          <div class="ui left icon input">
+	          <i aria-hidden="true" class="user icon"></i>
+            <%= f.text_field :user_name, autocomplete: "user_name",  placeholder: "Username"%>
+          </div>
+    
+          <div class="ui left icon input">
+            <i aria-hidden="true" class="mail icon"></i>
+            <%= f.email_field :email, autocomplete: "email", placeholder: "Email" %>
+          </div>
+    
+          <div class="ui left icon input">
+            <i aria-hidden="true" class="lock icon"></i>
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+          </div>
+    
+          <div class="ui left icon input">
+            <i aria-hidden="true" class="lock icon"></i>
+            <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+          </div>
+    
+          <div class="field">
+            <%= f.submit "Signup", class: "ui primary button" %>
+          </div>
+        <% end %>
       </div>
-
-      <div><%= f.label :email %><br />
-      <%= f.email_field :email, autocomplete: "email", placeholder: "Email" %></div>
-
-      <div><%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %></div>
-
-      <div><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, placeholder: "Password Confirmation"  %></div>
-
-      <div><%= f.submit "Sign up" %></div>
-    <% end %>
+      <!-- End of Sign Up -->
+    </div>
   </div>
-  <!-- End of Sign Up -->
+  <div class="ui vertical divider">
+    <i aria-hidden="true" class="code icon"></i>
+  </div>
 </div>
