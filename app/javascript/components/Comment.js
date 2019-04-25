@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Button, Comment, Form, Header, Icon } from 'semantic-ui-react'
+import { Button, Comment, Form, Header, Icon, TextArea } from 'semantic-ui-react'
 import { allLibrarys } from "./data/librarys";
 import moment from 'moment'
 
@@ -62,12 +62,7 @@ class Comments extends React.Component {
           <Form reply>
             <Form.Field>
               <label>Comment</label>
-              <textarea 
-                name="body"
-                placeholder=''
-                onChange={this.handleChange.bind(this)}
-                value={this.state.form.body}
-              ></textarea>
+							<TextArea name="body" placeholder='' onChange={this.handleChange.bind(this)} />
             </Form.Field>
 						<Button animated='vertical' onClick={this.submitForm}>
     				  <Button.Content hidden>

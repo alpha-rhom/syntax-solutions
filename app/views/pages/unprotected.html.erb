@@ -1,7 +1,7 @@
 <%= react_component('UnauthenticatedApp') %>
 
 <!-- Log in -->
-<div class="login">
+<div class="login hidden">
   <%= form_for(:user, :url => session_path(:user)) do |f| %>
     <div class="ui left icon input">
       <i aria-hidden="true" class="mail icon"></i>
@@ -24,7 +24,7 @@
 </div>
 <!-- End of Log in -->
 
-<div class="landing container">
+<div class="landing container hidden">
   <div class="ui stackable very relaxed two column grid">
     <div class="column">
         <!-- About -->

@@ -13,6 +13,8 @@ class Header extends React.Component{
 		const searchBar = site.querySelector('.search-bar')
 
     if (landing && site && header) {
+			landing.classList.remove('hidden')
+			landingLogin.classList.remove('hidden')
 			site.appendChild(landing)
 			headerContainer.appendChild(landingLogin)
 		}
