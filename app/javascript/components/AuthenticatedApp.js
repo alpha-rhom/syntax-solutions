@@ -16,15 +16,14 @@ class AuthenticatedApp extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <Header />
-
-        <main className="site">
-          <Router>
-            <Route exact to="/home" render={() => (
-                  <MainPage {...this.props} />
-            )}/>
-          </Router>
-        </main>
+        <Header current_user={this.props.current_user} />
+          <main className="site">
+            <Router>
+              <Route exact to="/home" render={() => (
+                    <MainPage {...this.props} />
+              )}/>
+            </Router>
+          </main>
         <Footer />
       </React.Fragment>
     );
