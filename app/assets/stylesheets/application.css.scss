@@ -29,6 +29,18 @@ body {
 	font: 18px/1.5 "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
+// there's a random parent div otherwise this should be inside body
+body > [data-react-class="AuthenticatedApp"],
+body > [data-react-class="UnauthenticatedApp"] {
+	display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.site {
+	flex: 1 0 auto;
+}
+
 a {
 	color: #000;
 }
@@ -63,6 +75,7 @@ p {
 .main-header {
 	background: #959ce9 radial-gradient(circle at 50% 300%, #959ce9 12.18%,#5862dd 74.53%);
 	height: 210px;
+	flex-shrink: 0;
 	padding-top: 20px;
 	padding-bottom: 80px; /* equal to wave SVG height */
 	position: relative;
@@ -489,12 +502,11 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 
 .main-footer {
 	border-top: 4px solid #777;
-	margin: 0 auto;
+	flex-shrink: 0;
 	padding-bottom: 5px;
 	text-align: center;
 	background: #aaa;
 }
-
 .main-footer .container {
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -522,5 +534,9 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 .copyright {
 	font-size: 16px;
 	padding-bottom: 10px;
-	color: white;
+	color: #151515;
+}
+
+.copyright p {
+	font-size: 14px;
 }
