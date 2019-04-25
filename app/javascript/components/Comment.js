@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Button, Comment, Form, Header } from 'semantic-ui-react'
+import { Button, Comment, Form, Header, Icon } from 'semantic-ui-react'
 import { allLibrarys } from "./data/librarys";
 import moment from 'moment'
 
@@ -33,7 +33,7 @@ class Comments extends React.Component {
     return (
       <React.Fragment>
 
-      <Comment.Group>
+      <Comment.Group size='large'>
 
           <Header as='h3' dividing>Comments</Header>
             { 
@@ -41,7 +41,7 @@ class Comments extends React.Component {
                     return(
                         <Comment key={index}>
                           <Comment.Content>
-                            <Comment.Author>Matt</Comment.Author>
+                            <Comment.Author as='span'>Matt</Comment.Author>
                             <Comment.Metadata>
                               {
                                 comment.created_at.length !== 0 ?
@@ -62,18 +62,21 @@ class Comments extends React.Component {
           <Form reply>
             <Form.Field>
               <label>Comment</label>
-              <input 
+              <textarea 
                 name="body"
                 placeholder=''
                 onChange={this.handleChange.bind(this)}
                 value={this.state.form.body}
-              />
+              ></textarea>
             </Form.Field>
-            <Button 
-              type='submit'
-              icon='save outline'
-              onClick={this.submitForm}
-            />
+						<Button animated='vertical' onClick={this.submitForm}>
+    				  <Button.Content hidden>
+								<Icon name='save outline' />
+							</Button.Content>
+							<Button.Content visible>
+								Reply
+							</Button.Content>
+						</Button>
           </Form>
         </Comment.Group>
 
