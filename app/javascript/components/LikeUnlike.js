@@ -67,7 +67,7 @@ class LikeUnlike extends React.Component {
       <React.Fragment>
 
         <Icon className='thumbsup' name='thumbs up outline' onClick={this.handleLike}/>
-        {this.props.librarys.likes}
+        <span className="likes">{this.props.librarys.likes}</span>
         <Icon className='thumbsdown' name='thumbs down outline' onClick={this.handleDislike} />
 
       </React.Fragment>

@@ -9,7 +9,6 @@ class UnauthenticatedApp extends React.Component {
       <React.Fragment>
         <Header />
         <main className="site">
-          <h1>UnauthenticatedApp</h1>
         </main>
         <Footer />
       </React.Fragment>
