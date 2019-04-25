@@ -23,18 +23,17 @@ class Footer extends React.Component {
 						<div className="column github_link">
 							<h3>Our Github Repository</h3>
 							<a href='https://github.com/alpha-rhom/syntax-solutions'><i aria-hidden="true" className="github square icon"></i>Syntax Solutions</a>
-							<p>Don't be shy; take a look at our code and </p>
-							<p>see how this all came together!</p> 
+							<p>Don't be shy; take a look at our code and see how this all came together!</p> 
 						</div>
 
 						<div className="column contact">
 							<h3>Contact Us </h3>
-							<p>Feel free to contact us by following the link below:</p>
+							<p>Feel free to contact us by following the email below:</p>
 							<a href="mailto:rhom7570@gmail.com">rhom7570@gmail.com</a>
 						</div>
 						<div className="column about">
 							<h3>About Us</h3>
-							<p> We all attended LEARN Academy, A full stack developer bootcamp, Located in San Diego, CA. This is our capstone project which we planned and executed on our own. </p>
+							<p> We all attended LEARN Academy, a full stack developer bootcamp, Located in San Diego, CA. This is our capstone project which we planned and executed on our own. </p>
 						</div>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 109.84 100.99" className="column rhomb">
 							<path d="M66.46 85.94a15.85 15.85 0 0 0-4.1 2.2c-1.77 1.3-2.32 2.44-2.14 3.55a1.44 1.44 0 0 0 1.24 1.22 2.42 2.42 0 0 0 0 2.19 2.1 2.1 0 0 0 1.94 1c0 .91-.21 1.12.36 1.83a2.49 2.49 0 0 0 1.86.84 2.63 2.63 0 0 0 1.24 1.57c2.21 1.12 9.53-3.92 12.57-6 3.64-2.55 23.65-16.36 28.19-18.17l-6.8-9.85c.88.55-24.86 14.51-27.61 15.52-2.53.94-3.73.37-6.52.91-2.57.5-5.79 4.06-2.61 4.36" className="a"/>
@@ -66,7 +65,7 @@ class Footer extends React.Component {
 						</svg>
 					</div>
 					<div className='copyright'>
-						<p>&copy; Alpha Rhombus | Tucker Mullen, Luke Shoenberger, Carrie Johnson, and Natalie Reinicke</p>
+						<p>&copy; Alpha Rhombus | 2019</p>
 					</div>
 				</footer>
 			</React.Fragment>
