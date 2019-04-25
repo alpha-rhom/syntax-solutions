@@ -194,7 +194,7 @@ p {
 	d: path("");
 }
 
-.scroll + .search-bar {
+.scroll + .site .search-bar {
 	position: fixed;
 	top: 36px;
 	z-index: 100;
@@ -536,8 +536,8 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 }
 
 .rhomb {
-	height: 100px;
-
+	  width: 192px;
+    padding-top: 32px;
 	.a{
 		fill:#ffecb8
 	}
