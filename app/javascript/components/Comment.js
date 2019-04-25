@@ -29,7 +29,7 @@ class Comments extends React.Component {
   }
  
 
-  render () { console.log(this.props.librarys)
+  render () { 
     return (
       <React.Fragment>
 
