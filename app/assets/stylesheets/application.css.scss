@@ -449,6 +449,10 @@ i.inverted.addcard.circular.icon:hover {
 
 // landing page
 
+.landing.hidden, .login.hidden {
+	display: none !important;
+}
+
 .landing {
 	background: $card-bg;
 	border-top: 4px solid #5862dd;
@@ -533,7 +537,6 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 }
 
 .rhomb {
-	  width: 192px;
     padding-top: 32px;
 	.a{
 		fill:#ffecb8
@@ -548,19 +551,19 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	}
 }
 
-.main-footer .column {
-	float: left;
-	padding-right: 20px;
-	width: 20%;
-}
+// .main-footer .column {
+// 	float: left;
+// 	padding-right: 20px;
+// 	width: 20%;
+// }
 
-.main-footer .column:last-child {
-	padding-right: 0;
-}
+// .main-footer .column:last-child {
+// 	padding-right: 0;
+// }
 
-.main-footer .column li, .main-footer .column p {
-	font-size: 16px;
-}
+// .main-footer .column li, .main-footer .column p {
+// 	font-size: 16px;
+// }
 
 //linkedin
 .linkedin {
