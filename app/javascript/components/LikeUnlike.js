@@ -9,7 +9,9 @@ class LikeUnlike extends React.Component {
         title: this.props.librarys.title,
         desc: this.props.librarys.desc,
         markdown: this.props.librarys.markdown,
-        likes: this.props.librarys.likes
+        likes: this.props.librarys.likes,
+        likedIcon: false,
+        dislikedIcon: false
       },
       likeTotal: 0
     }
@@ -48,6 +50,7 @@ class LikeUnlike extends React.Component {
         let currentLike = typeof this.props.librarys.likes === 'number' ? parseInt(this.props.librarys.likes) : 0
         let newLike = currentLike + 1
         this.handleLikeUnlike(newLike, e)
+        this.setState({ likedIcon: true })
       } 
 
   }
@@ -59,17 +62,23 @@ class LikeUnlike extends React.Component {
       let currentLike = typeof this.props.librarys.likes === 'number' ? parseInt(this.props.librarys.likes) : 0
       let newLike = currentLike - 1
       this.handleLikeUnlike(newLike, e)
+      this.setState({ dislikedIcon: true })
     } 
   }
 
   render () {
+    const { likedIcon, dislikedIcon } = this.state
     return (
       <React.Fragment>
-
-        <Icon className='thumbsup' name='thumbs up outline' onClick={this.handleLike}/>
-        <span className="likes">{this.props.librarys.likes}</span>
-        <Icon className='thumbsdown' name='thumbs down outline' onClick={this.handleDislike} />
-
+        { likedIcon ? 
+          <Icon className='thumbsup' name='thumbs up' onClick={this.handleLike}/> : 
+          <Icon className='thumbsup' name='thumbs up outline' onClick={this.handleLike}/>
+        }
+          <span className="likes">{this.props.librarys.likes}</span>
+        { dislikedIcon ? 
+          <Icon className='thumbsdown' name='thumbs down' onClick={this.handleDislike} /> : 
+          <Icon className='thumbsdown' name='thumbs down outline' onClick={this.handleDislike} />
+        }
       </React.Fragment>
     );
   }
