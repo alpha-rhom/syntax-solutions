@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Form, Button, Modal, Icon } from 'semantic-ui-react'
+import { Form, Button, Modal, Icon, TextArea } from 'semantic-ui-react'
 
 class UpdateCard extends React.Component {
   constructor(props) {
@@ -64,14 +64,21 @@ class UpdateCard extends React.Component {
                 </Form.Field>
                 <Form.Field>
                   <label>Markdown</label>
-                  <input
-                      name="markdown"
-                      placeholder='Markdown'
-                      value={markdown}
-                      onChange={this.handleChange.bind(this)}
-                  />
+                  <TextArea
+                    name="markdown"
+                    placeholder="Markdown"
+                    value={markdown}
+                    onChange={this.handleChange.bind(this)}
+									/>
                 </Form.Field>
-                <Button type='submit' onClick={this.handleEdit}>Submit</Button>
+								<Button animated='vertical' onClick={this.handleEdit}>
+									<Button.Content hidden>
+										<Icon name='arrow right' />
+									</Button.Content>
+									<Button.Content visible>
+									Submit
+									</Button.Content>
+								</Button>
               </Form>
           </Modal.Content>
         </Modal>

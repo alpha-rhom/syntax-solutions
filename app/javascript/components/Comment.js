@@ -66,7 +66,7 @@ class Comments extends React.Component {
             </Form.Field>
 						<Button animated='vertical' onClick={this.submitForm}>
     				  <Button.Content hidden>
-								<Icon name='save outline' />
+								<Icon name='reply' />
 							</Button.Content>
 							<Button.Content visible>
 								Reply
