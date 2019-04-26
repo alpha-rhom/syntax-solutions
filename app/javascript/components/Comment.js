@@ -28,7 +28,6 @@ class Comments extends React.Component {
     this.setState({form: {...this.state.form, body: '',},})
   }
  
-
   render () {
     return (
       <React.Fragment>
@@ -62,7 +61,7 @@ class Comments extends React.Component {
           <Form reply>
             <Form.Field>
               <label>Comment</label>
-							<TextArea name="body" placeholder='' onChange={this.handleChange.bind(this)} />
+							<TextArea name="body" placeholder='' value={this.state.form.body} onChange={this.handleChange.bind(this)} />
             </Form.Field>
 						<Button animated='vertical' onClick={this.submitForm}>
     				  <Button.Content hidden>
