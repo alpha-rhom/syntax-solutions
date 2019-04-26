@@ -186,8 +186,8 @@ class Card extends React.Component {
 												readOnly={true}
 												value={librarys.markdown}
 												setOptions={{
-												showLineNumbers: true,
-												tabSize: 2,
+                          showLineNumbers: true,
+                          tabSize: 2,
 												}}
 												editorProps={{
 													$blockScrolling: Infinity

@@ -1,8 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Form, Button, Modal, Icon } from 'semantic-ui-react'
+import { Form, Button, Modal, Icon, TextArea } from 'semantic-ui-react'
 import AceEditor from "react-ace";
 import brace from "brace";
+import 'brace/mode/javascript';
+import 'brace/theme/github';
 
 class NewCard extends React.Component {
   constructor(props) {
@@ -42,23 +44,28 @@ class NewCard extends React.Component {
               <Form>
                 <Form.Field>
                   <label>Title</label>
-                  <input  name="title" autoFocus placeholder='Title' onChange={this.handleChange.bind(this)} />
+                  <input name="title" autoFocus placeholder='Title' onChange={this.handleChange.bind(this)} />
                 </Form.Field>
                 <Form.Field>
                   <label>Description</label>
-                  <input  name="desc" placeholder='Description' onChange={this.handleChange.bind(this)} />
+                  <input name="desc" placeholder='Description' onChange={this.handleChange.bind(this)} />
                 </Form.Field>
                 <Form.Field>
                   <label>Markdown</label>
-                <textarea name="markdown" placeholder='Markdown' onChange={this.handleChange.bind(this)}>
-                <AceEditor
-                  showGutter={false}
-                  theme="github"
-                  highlightActiveLine={false}
-                  onChange={this.handleChange.bind(this)}/>
-                </textarea>
+                  <TextArea
+                    name="markdown"
+                    placeholder="Markdown"
+                    onChange={this.handleChange.bind(this)}
+									/>
                 </Form.Field>
-                <Button type='submit' onClick={submitForm}>Submit</Button>
+								<Button animated='vertical' onClick={submitForm}>
+									<Button.Content hidden>
+										<Icon name='arrow right' />
+									</Button.Content>
+									<Button.Content visible>
+										Submit
+									</Button.Content>
+								</Button>
               </Form>
           </Modal.Content>
         </Modal>

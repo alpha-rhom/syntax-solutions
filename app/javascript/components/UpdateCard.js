@@ -77,7 +77,7 @@ class UpdateCard extends React.Component {
 										<Icon name='arrow right' />
 									</Button.Content>
 									<Button.Content visible>
-									Submit
+								  	Submit
 									</Button.Content>
 								</Button>
               </Form>

@@ -22,6 +22,7 @@
 }
 
 $bg-color: #eee;
+$accent: #5862dd;
 $card-bg: #fff;
 
 body {
@@ -223,12 +224,20 @@ p {
 		right: 15px;
 
 		.btn-trash:hover .oscar .trash, .btn-trash:hover .oscar .lid {
-			fill: #5862dd;
-			stroke: #5862dd;
+			fill: $accent;
+			stroke: $accent;
 		}
 
 		.likes {
 			margin-right: 0.4rem;
+		}
+
+		.liked {
+			color: #0063c4;
+		}
+
+		.unliked {
+			color: #db2828;
 		}
 		
 		i {
@@ -236,12 +245,12 @@ p {
 		}
 		
 		i:hover {
-			color: #5862dd;
+			color: $accent;
 		}
 	}
 
 	&.active {
-		border-top: 4px solid #5862dd;
+		border-top: 4px solid $accent;
 	}
 
 	.title h2 {
