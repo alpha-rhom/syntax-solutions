@@ -1,41 +1,49 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Accordion, Icon, Input, Form, Button, Modal, Label, Grid } from 'semantic-ui-react'
+import { Accordion, Icon, Input, Form, Button, Modal, Label, Grid, List, Header } from 'semantic-ui-react'
 
 class Footer extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
 				
-				<footer className="main-footer">
+\				<footer className="main-footer">
 					<div className="container">
 						<Grid stackable columns={5}>
 							<Grid.Row>
 								<Grid.Column className="linkedin">
-									<h3>Our Developers Linkedin</h3>
+									<Header as='h3' textAlign='center'>Get to Know Us</Header>
 									
-									<ul>
-										<li><a href='https://www.linkedin.com/in/nataliereinicke/'><i aria-hidden="true" className="linkedin icon"></i>Natalie Reinicke</a></li>
-										<li><a href='https://www.linkedin.com/in/tuckermullen/'><i aria-hidden="true" className="linkedin icon"></i>Tucker Mullen</a></li>
-										<li><a href='https://www.linkedin.com/in/johnson-carrie2000/'><i aria-hidden="true" className="linkedin icon"></i>Carrie Johnson</a></li>
-										<li><a href='https://www.linkedin.com/in/luke-schoenberger-a34ba496/'><i aria-hidden="true" className="linkedin icon"></i>Luke Shoenberger</a></li>
-									</ul>
+									<List animated verticalAlign='middle'>
+										<List.Item>
+											<List.Content href='https://www.linkedin.com/in/nataliereinicke/'><List.Icon name='linkedin' /> Natalie Reinicke</List.Content>
+										</List.Item>
+										<List.Item>
+											<List.Content href='https://www.linkedin.com/in/tuckermullen/'><List.Icon name='linkedin' /> Tucker Mullen</List.Content>
+										</List.Item>
+										<List.Item>
+											<List.Content href='https://www.linkedin.com/in/johnson-carrie2000/'><List.Icon name='linkedin' /> Carrie Johnson</List.Content>
+										</List.Item>
+										<List.Item>
+											<List.Content href='https://www.linkedin.com/in/luke-schoenberger-a34ba496/'><List.Icon name='linkedin' /> Luke Shoenberger</List.Content>
+										</List.Item>
+									</List>
 								</Grid.Column>
 								<Grid.Column className="github_link">
-									<h3>Our Github Repository</h3>
+									<Header as='h3' textAlign='center'>Explore Our Code</Header>
 									<a href='https://github.com/alpha-rhom/syntax-solutions'><i aria-hidden="true" className="github square icon"></i>Syntax Solutions</a>
-									<p>Don't be shy; take a look at our code and see how this all came together!</p> 
+									<p>Don't be shy; take a look at our code and see how this all came together!</p>
 								</Grid.Column>
 								<Grid.Column className="contact">
-									<h3>Contact Us </h3>
+									<Header as='h3' textAlign='center'>Contact Us</Header>
 									<p>Feel free to contact us by following the email below:</p>
 									<a href="mailto:rhom7570@gmail.com">rhom7570@gmail.com</a>
 								</Grid.Column>
 								<Grid.Column className="about">
-									<h3>About Us</h3>
-									<p> We all attended LEARN Academy, a full stack developer bootcamp, Located in San Diego, CA. This is our capstone project which we planned and executed on our own. </p>
+									<Header as='h3' textAlign='center'>About Us</Header>
+									<p> We all attended LEARN Academy, a full stack developer bootcamp, located in San Diego, CA. This is our capstone project which we planned and executed on our own. </p>
 								</Grid.Column>
-								<Grid.Column className="logo">
+								<Grid.Column className="logo top aligned">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 109.84 100.99" className="rhomb">
 										<path d="M66.46 85.94a15.85 15.85 0 0 0-4.1 2.2c-1.77 1.3-2.32 2.44-2.14 3.55a1.44 1.44 0 0 0 1.24 1.22 2.42 2.42 0 0 0 0 2.19 2.1 2.1 0 0 0 1.94 1c0 .91-.21 1.12.36 1.83a2.49 2.49 0 0 0 1.86.84 2.63 2.63 0 0 0 1.24 1.57c2.21 1.12 9.53-3.92 12.57-6 3.64-2.55 23.65-16.36 28.19-18.17l-6.8-9.85c.88.55-24.86 14.51-27.61 15.52-2.53.94-3.73.37-6.52.91-2.57.5-5.79 4.06-2.61 4.36" className="a"/>
 										<path d="M67.59 101a2.27 2.27 0 0 1-1-.2 3.34 3.34 0 0 1-1.39-1.55 2.86 2.86 0 0 1-1.86-1 1.86 1.86 0 0 1-.49-1.55.62.62 0 0 1 0-.13A2.42 2.42 0 0 1 61 95.34a2.77 2.77 0 0 1-.18-2.11 1.94 1.94 0 0 1-1.07-1.46c-.24-1.41.51-2.69 2.34-4a16.36 16.36 0 0 1 4.2-2.25.5.5 0 0 1 .65.27.49.49 0 0 1-.27.65 15.3 15.3 0 0 0-4 2.14c-2 1.44-2 2.44-1.94 3.07a.92.92 0 0 0 .79.8.52.52 0 0 1 .4.27.51.51 0 0 1 0 .48 1.88 1.88 0 0 0 0 1.71 1.56 1.56 0 0 0 1.46.73.56.56 0 0 1 .37.13.51.51 0 0 1 .17.35v.68a.88.88 0 0 0 .26.85 2 2 0 0 0 1.46.66.51.51 0 0 1 .51.42 2.15 2.15 0 0 0 1 1.2c.76.39 3.33.11 12.06-6 .23-.16 23.25-16.21 28.3-18.23a.51.51 0 0 1 .65.28.51.51 0 0 1-.28.65c-4.32 1.73-23.56 14.94-28.09 18.12C73.62 99 69.71 101 67.59 101z" className="b"/>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Likes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Library</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_likes.each do |user_like| %>
+      <tr>
+        <td><%= user_like.user_id %></td>
+        <td><%= user_like.library_id %></td>
+        <td><%= user_like.value %></td>
+        <td><%= link_to 'Show', user_like %></td>
+        <td><%= link_to 'Edit', edit_user_like_path(user_like) %></td>
+        <td><%= link_to 'Destroy', user_like, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Like', new_user_like_path %>

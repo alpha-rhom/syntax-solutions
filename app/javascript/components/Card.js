@@ -81,6 +81,7 @@ class Card extends React.Component {
           return library.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || library.desc.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         })
     }
+
     return (
       <React.Fragment>
         { this.state.sortCards !== "myCards" &&
@@ -161,7 +162,9 @@ class Card extends React.Component {
 											<LikeUnlike 
 												handleUpdate={this.props.handleUpdate} 
 												libraryId={librarys.id} 
-												librarys={librarys}
+                        librarys={librarys}
+                        createLikeUnlike={this.props.createLikeUnlike}
+                        currentUser={this.props.currentUser}
 												/>
 										</div>
                     <Accordion.Title active={activeIndex === index} index={index} onClick={this.handleClick}>
@@ -183,8 +186,8 @@ class Card extends React.Component {
 												readOnly={true}
 												value={librarys.markdown}
 												setOptions={{
-												showLineNumbers: true,
-												tabSize: 2,
+                          showLineNumbers: true,
+                          tabSize: 2,
 												}}
 												editorProps={{
 													$blockScrolling: Infinity

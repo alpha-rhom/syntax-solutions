@@ -1,8 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Form, Button, Modal, Icon } from 'semantic-ui-react'
+import { Form, Button, Modal, Icon, TextArea } from 'semantic-ui-react'
 import AceEditor from "react-ace";
 import brace from "brace";
+import 'brace/mode/javascript';
+import 'brace/theme/github';
 
 class NewCard extends React.Component {
   constructor(props) {
@@ -71,7 +73,15 @@ class NewCard extends React.Component {
               
                 <Button type='submit' onClick={submitForm}>Submit</Button>
             </Form>
-            
+								<Button animated='vertical' onClick={submitForm}>
+									<Button.Content hidden>
+										<Icon name='arrow right' />
+									</Button.Content>
+									<Button.Content visible>
+										Submit
+									</Button.Content>
+								</Button>
+              </Form>
           </Modal.Content>
         </Modal>
       </React.Fragment>

@@ -10,7 +10,8 @@ class LibrariesController < ActionController::API
 
     @libraries = Library.all.order('created_at ASC')
     @comments = Comment.all
-    render :json => @libraries, :include => [:user, :comments]
+    @user_likes = UserLike.all
+    render :json => @libraries, :include => [:user, :comments, :user_likes]
    
 
   end

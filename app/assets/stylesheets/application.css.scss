@@ -22,6 +22,7 @@
 }
 
 $bg-color: #eee;
+$accent: #5862dd;
 $card-bg: #fff;
 
 body {
@@ -213,41 +214,49 @@ p {
 	padding: 15px;
 	position: relative;
 	margin-bottom: 40px;
-	
-	.btn-trash:hover .oscar .trash, .btn-trash:hover .oscar .lid {
-		fill: #5862dd;
-		stroke: #5862dd;
+
+	.controls {
+		display: flex;
+		align-items: flex-end;
+		line-height: 18px;
+		position: absolute;
+		padding: 0.5em 0;
+		right: 15px;
+
+		.btn-trash:hover .oscar .trash, .btn-trash:hover .oscar .lid {
+			fill: $accent;
+			stroke: $accent;
+		}
+
+		.likes {
+			margin-right: 0.4rem;
+		}
+
+		.liked {
+			color: #0063c4;
+		}
+
+		.unliked {
+			color: #db2828;
+		}
+		
+		i {
+			cursor: pointer;
+		}
+		
+		i:hover {
+			color: $accent;
+		}
 	}
-	
-	i:hover {
-		color: #5862dd;
+
+	&.active {
+		border-top: 4px solid $accent;
 	}
-}
 
-.accordion.active {
-	border-top: 4px solid #5862dd;
-}
-
-.accordion .controls {
-	display: flex;
-	align-items: flex-end;
-	line-height: 18px;
-	position: absolute;
-	padding: 0.5em 0;
-	right: 15px;
-}
-
-.accordion .controls i {
-	cursor: pointer;
-}
-
-.accordion .likes {
-	margin-right: 0.4rem;
-}
-
-.accordion .title h2 {
-	display: inline;
-	margin: 0;
+	.title h2 {
+		display: inline;
+		margin: 0;
+	}
 }
 
 // oscar trash can
@@ -527,7 +536,6 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	border-top: 4px solid #777;
 	flex-shrink: 0;
 	padding-bottom: 5px;
-	text-align: center;
 	background: #aaa;
 }
 
@@ -537,7 +545,6 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 }
 
 .rhomb {
-    padding-top: 32px;
 	.a{
 		fill:#ffecb8
 	}
@@ -567,7 +574,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 
 //linkedin
 .linkedin {
-	font-size: 16px;
+	font-size: 13px;
 	color: black;
 }
 
@@ -575,6 +582,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	list-style: none;
 	padding: 0;
 	text-align: left;
+	font-size: 13px;
 }
 
 .linkedin a {
@@ -583,6 +591,15 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 
 .github_link a{
 	color: black;
+	font-size: 13px;
+}
+
+.contact a, p{
+		font-size: 13px;
+}
+
+.about p{
+	font-size: 13px;
 }
 
 //copyright
