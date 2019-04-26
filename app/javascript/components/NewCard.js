@@ -32,6 +32,12 @@ class NewCard extends React.Component {
     this.props.createLibrary(this.state.form)
   }
 
+  handleAce = (newValue) => {
+    let { form } = this.state
+    form.markdown = newValue
+    this.setState({ form: form })
+  }
+
   render () {
 
     const { submitForm } = this
@@ -41,23 +47,32 @@ class NewCard extends React.Component {
           <Modal trigger={<Icon className='addcard' circular inverted name='plus' />}>
           <Modal.Header>New Card</Modal.Header>
           <Modal.Content >
-              <Form>
+              
+            <Form>
                 <Form.Field>
                   <label>Title</label>
-                  <input name="title" autoFocus placeholder='Title' onChange={this.handleChange.bind(this)} />
-                </Form.Field>
+                  <input  name="title" autoFocus placeholder='Title' onChange={this.handleChange.bind(this)} />
+              </Form.Field>
+              
                 <Form.Field>
                   <label>Description</label>
-                  <input name="desc" placeholder='Description' onChange={this.handleChange.bind(this)} />
-                </Form.Field>
+                  <input  name="desc" placeholder='Description' onChange={this.handleChange.bind(this)} />
+              </Form.Field>
+              
                 <Form.Field>
-                  <label>Markdown</label>
-                  <TextArea
-                    name="markdown"
-                    placeholder="Markdown"
-                    onChange={this.handleChange.bind(this)}
-									/>
-                </Form.Field>
+                <label>Markdown</label>
+                <AceEditor
+                  value={`${this.state.form.markdown}`}
+                  name="markdown"
+                  placeholder='Markdown'
+                  showGutter={true}
+                  theme="github"
+                  highlightActiveLine={false}
+                  onChange={this.handleAce} />
+              </Form.Field>
+              
+                <Button type='submit' onClick={submitForm}>Submit</Button>
+            </Form>
 								<Button animated='vertical' onClick={submitForm}>
 									<Button.Content hidden>
 										<Icon name='arrow right' />
@@ -73,5 +88,5 @@ class NewCard extends React.Component {
     );
   }
 }
-
+ 
 export default NewCard
