@@ -99,6 +99,19 @@ class MainPage extends React.Component {
       })
   }
 
+  createLikeUnlike = (lul) => {
+    return fetch('http://localhost:3000/user_likes', {
+      body: JSON.stringify({lul}),  // <- we need to stringify the json for fetch
+      headers: {  // <- We specify that we're sending JSON, and expect JSON back
+        'Content-Type': 'application/json'
+      },
+      method: "POST"  // <- Here's our verb, so the correct endpoint is invoked on the server
+    })
+    .then((response) => {
+      console.log('hello')
+    })
+  }
+
   updateComment(comment){
     let updateIndex = this.state.librarys.findIndex((library) => library.id === comment.library_id)
     let newState = this.state.librarys
@@ -120,6 +133,7 @@ class MainPage extends React.Component {
             handleDelete={handleDelete}
             currentUser={this.props.current_user}
             createComment={this.createComment}
+            createLikeUnlike={this.createLikeUnlike}
         />
         <NewCard 
           createLibrary={createLibrary}

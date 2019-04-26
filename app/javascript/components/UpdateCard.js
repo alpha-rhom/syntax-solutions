@@ -30,7 +30,8 @@ class UpdateCard extends React.Component {
     let id = this.state.libraryId
     let likes = this.state.form.likes
     let userId = this.props.userId
-    let library = {id: id, title: title, desc: desc,  markdown:  markdown, likes: likes, user_id: userId}
+    let comments = this.props.librarys.comments
+    let library = {id: id, title: title, desc: desc,  markdown:  markdown, likes: likes, user_id: userId, comments: comments}
     this.props.handleUpdate(library)
   }
 
