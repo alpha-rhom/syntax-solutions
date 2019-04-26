@@ -28,8 +28,7 @@ class Comments extends React.Component {
     this.setState({form: {...this.state.form, body: '',},})
   }
  
-
-  render () { 
+  render () {
     return (
       <React.Fragment>
 
