@@ -73,6 +73,7 @@ class NewCard extends React.Component {
               
                 <Button type='submit' onClick={submitForm}>Submit</Button>
             </Form>
+            <Form>
 								<Button animated='vertical' onClick={submitForm}>
 									<Button.Content hidden>
 										<Icon name='arrow right' />
