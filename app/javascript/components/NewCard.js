@@ -42,7 +42,7 @@ class NewCard extends React.Component {
               <Form>
                 <Form.Field>
                   <label>Title</label>
-                  <input  name="title" placeholder='Title' onChange={this.handleChange.bind(this)} />
+                  <input  name="title" autoFocus placeholder='Title' onChange={this.handleChange.bind(this)} />
                 </Form.Field>
                 <Form.Field>
                   <label>Description</label>

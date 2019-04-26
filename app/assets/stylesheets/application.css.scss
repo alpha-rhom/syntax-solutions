@@ -37,22 +37,6 @@ body > [data-react-class]	 {
   height: 100vh;
 }
 
-// body > [data-react-class] .main-header {
-// 	order: 1;
-// }
-
-// body > [data-react-class] .site {
-// 	order: 2;
-// }
-
-// body > [data-react-class] .landing {
-// 	order: 3;
-// }
-
-// body > [data-react-class] .main-footer {
-// 	order: 4;
-// }
-
 .site {
 	flex: 1 0 auto;
 }
@@ -90,7 +74,6 @@ p {
 //  header of wave
 .main-header {
 	background: #959ce9 radial-gradient(circle at 50% 300%, #959ce9 12.18%,#5862dd 74.53%);
-	height: 210px;
 	flex-shrink: 0;
 	padding-top: 20px;
 	padding-bottom: 80px; /* equal to wave SVG height */
@@ -150,17 +133,14 @@ p {
 // search bar 
 .search-bar {
 	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
-	position: absolute;
+	margin-top: 10px;
 	width: 90%;
-	top: 120px;
-	left: 0;
-	right: 0;
 }
 
 // make search bar responsive
 @media (min-width: 400px) {
 	.search-bar {
-		margin: 0 auto;
+		margin: 10px auto 0;
 		width: 400px;
 	}
 }
@@ -194,10 +174,12 @@ p {
 	d: path("");
 }
 
-.scroll + .search-bar {
-	position: fixed;
-	top: 36px;
+.scroll .search-bar {
+	position: absolute;
+	top: 0;
 	z-index: 100;
+	left: 0;
+	right: 0;
 }
 
 // drop-down bar 
@@ -214,7 +196,6 @@ p {
 
 .center .ui.active.button {
 	background-color: #5862dd;
-	// background-image: radial-gradient(circle at 0% -50%, #959ce9 12.18%,#5862dd 74.53%);
 	box-shadow: 0px 0px 0px 1px transparent inset;
 	color: #fff;
 }
@@ -260,13 +241,8 @@ p {
 	cursor: pointer;
 }
 
-.accordion .controls i.btn-trash {
-	margin-bottom: -1px;
+.accordion .likes {
 	margin-right: 0.4rem;
-}
-
-.accordion .likes span {
-	margin: 0em 0.4rem 0em 0em;
 }
 
 .accordion .title h2 {
@@ -276,8 +252,10 @@ p {
 
 // oscar trash can
 .oscar {
-	width: 17.75px;
+	margin-bottom: -1px;
+	margin-right: 0.25em;
 	vertical-align: bottom;
+	width: 17.75px;
 }
 
 .oscar .brow {
@@ -448,8 +426,12 @@ p {
 	height: 256px !important;
 	width: 100% !important;
 }
+
 //comments
 
+.comment time {
+	display: inline;
+}
 
 // add card
 
@@ -465,26 +447,44 @@ i.inverted.addcard.circular.icon:hover {
 	background-color: #5862dd !important;
 }
 
-// login page
-.login, .signup{
-	// box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
-	// position: absolute;
-	// left: 50%;
-	// top: 50%;	
-	// transform: translate(-50%,-50%);
-	// width: 500px;
-	// text-align: center;
-	// background: #959ce9 radial-gradient( #959ce9 12.18%,#5862dd 74.53%);
-	// position: relative;
-	// border-radius: 17px;
-	// padding-bottom:12px;
-	// padding-top: 12px;
-	// border-radius: 5px;
+// landing page
 
-	// position: absolute;
-	// top: 250px;
-	// left: 50%;
-	// transform: translateX(-50%);
+.landing.hidden, .login.hidden {
+	display: none !important;
+}
+
+.landing {
+	background: $card-bg;
+	border-top: 4px solid #5862dd;
+	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
+	font-size: 18px;
+	margin: 40px auto;
+	padding: 15px;
+	position: relative;
+}
+
+.login form, .login .input, .login .actions {
+	display: inline;
+}
+
+.login .input {
+	margin-right: 10px;
+}
+
+.login, .login .memory {
+	margin-top: 20px;
+}
+
+.signup .input {
+	margin-bottom: 20px;
+}
+
+.ui.vertical.divider .icon {
+	font-size: 24px;
+}
+
+.ui.vertical.divider:before, .ui.vertical.divider:after {
+	height: calc(100% - 24px);
 }
 
 .login a, .signin a {
@@ -520,6 +520,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	width: 50%;
 	padding-bottom: 5px;
 }
+
 //footer
 
 .main-footer {
@@ -536,8 +537,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 }
 
 .rhomb {
-	height: 100px;
-
+    padding-top: 32px;
 	.a{
 		fill:#ffecb8
 	}
@@ -551,19 +551,19 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	}
 }
 
-.main-footer .column {
-	float: left;
-	padding-right: 20px;
-	width: 20%;
-}
+// .main-footer .column {
+// 	float: left;
+// 	padding-right: 20px;
+// 	width: 20%;
+// }
 
-.main-footer .column:last-child {
-	padding-right: 0;
-}
+// .main-footer .column:last-child {
+// 	padding-right: 0;
+// }
 
-.main-footer .column li, .main-footer .column p {
-	font-size: 16px;
-}
+// .main-footer .column li, .main-footer .column p {
+// 	font-size: 16px;
+// }
 
 //linkedin
 .linkedin {

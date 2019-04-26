@@ -16,12 +16,11 @@ class AuthenticatedApp extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <Header />
-
+				<Header current_user={this.props.current_user} />
         <main className="site">
           <Router>
             <Route exact to="/home" render={() => (
-                  <MainPage {...this.props} />
+              <MainPage {...this.props} />
             )}/>
           </Router>
         </main>
