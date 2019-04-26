@@ -30,7 +30,6 @@ class Comments extends React.Component {
  
 
   render () { 
-    {console.log('in comments',this.props.librarys)}
     return (
       <React.Fragment>
 
