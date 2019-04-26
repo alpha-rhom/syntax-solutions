@@ -30,6 +30,12 @@ class NewCard extends React.Component {
     this.props.createLibrary(this.state.form)
   }
 
+  handleAce = (newValue) => {
+    let { form } = this.state
+    form.markdown = newValue
+    this.setState({ form: form })
+  }
+
   render () {
 
     const { submitForm } = this
@@ -53,13 +59,14 @@ class NewCard extends React.Component {
               
                 <Form.Field>
                 <label>Markdown</label>
-                <textarea name="markdown" placeholder='Markdown' onChange={this.handleChange.bind(this)}>
                 <AceEditor
-                  showGutter={false}
+                  value={`${this.state.form.markdown}`}
+                  name="markdown"
+                  placeholder='Markdown'
+                  showGutter={true}
                   theme="github"
                   highlightActiveLine={false}
-                      onChange={this.handleChange.bind(this)} />
-                  </textarea>
+                  onChange={this.handleAce} />
               </Form.Field>
               
                 <Button type='submit' onClick={submitForm}>Submit</Button>
@@ -71,5 +78,5 @@ class NewCard extends React.Component {
     );
   }
 }
-
+ 
 export default NewCard
