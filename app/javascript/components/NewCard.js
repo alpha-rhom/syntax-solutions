@@ -70,8 +70,6 @@ class NewCard extends React.Component {
                   highlightActiveLine={false}
                   onChange={this.handleAce} />
               </Form.Field>
-              
-                <Button type='submit' onClick={submitForm}>Submit</Button>
             </Form>
             <Form>
 								<Button animated='vertical' onClick={submitForm}>
