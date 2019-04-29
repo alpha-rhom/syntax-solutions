@@ -30,6 +30,7 @@ class NewCard extends React.Component {
 
   submitForm = () => {
     this.props.createLibrary(this.state.form)
+    this.setState({form: {...this.state.form, markdown: '',},}) 
   }
 
   handleAce = (newValue) => {
@@ -59,12 +60,13 @@ class NewCard extends React.Component {
                   <input  name="desc" placeholder='Description' onChange={this.handleChange.bind(this)} required />
               </Form.Field>
               
-              <Form.Field required>
-                <label>Markdown</label>
+                <Form.Field required>
+                <label>Code Snippet</label>
+
                 <AceEditor
                   value={`${this.state.form.markdown}`}
-                  name="markdown"
-                  placeholder='Markdown'
+                  name="Code Snippet"
+                  placeholder='Code Snippet'
                   showGutter={true}
                   theme="github"
                   highlightActiveLine={false}
@@ -80,7 +82,7 @@ class NewCard extends React.Component {
 										Submit
 									</Button.Content>
 								</Button>
-              </Form>
+              </Form> 
           </Modal.Content>
         </Modal>
       </React.Fragment>
