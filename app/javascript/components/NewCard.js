@@ -30,6 +30,7 @@ class NewCard extends React.Component {
 
   submitForm = () => {
     this.props.createLibrary(this.state.form)
+    this.setState({form: {...this.state.form, markdown: '',},}) 
   }
 
   handleAce = (newValue) => {
