@@ -60,11 +60,11 @@ class NewCard extends React.Component {
               </Form.Field>
               
                 <Form.Field>
-                <label>Markdown</label>
+                <label>Code Snippet</label>
                 <AceEditor
                   value={`${this.state.form.markdown}`}
-                  name="markdown"
-                  placeholder='Markdown'
+                  name="Code Snippet"
+                  placeholder='Code Snippet'
                   showGutter={true}
                   theme="github"
                   highlightActiveLine={false}
@@ -80,7 +80,7 @@ class NewCard extends React.Component {
 										Submit
 									</Button.Content>
 								</Button>
-              </Form>
+              </Form> 
           </Modal.Content>
         </Modal>
       </React.Fragment>
