@@ -87,14 +87,15 @@ class Card extends React.Component {
         { this.state.sortCards !== "myCards" &&
           <div className='search-bar'>
             <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" />
+						<em>* Searches only by title and description. *</em>
           </div>
           ||
           <div className='search-bar'>
             <Input fluid icon={<Icon name='search' inverted circular link />} value={this.state.search} onChange={this.updateSearch} placeholder="Search Syntaxes" disabled />
+						<em>* Search is disabled. *</em>
           </div>
         }
-
-        <div className="container center">
+        <div className="container card-controls">
           <div className="ui buttons">
             <button className={ this.state.sortCards === "newest" ? "ui button active" : "ui button" } onClick={this.toggleNewestCards}>Newest</button>
             <button className={ this.state.sortCards === "oldest" ? "ui button active" : "ui button" } onClick={this.toggleOldestCards}>Oldest</button>

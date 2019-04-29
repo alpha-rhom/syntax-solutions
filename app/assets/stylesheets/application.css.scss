@@ -133,9 +133,17 @@ p {
 
 // search bar 
 .search-bar {
-	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
 	margin-top: 10px;
 	width: 90%;
+
+	input {
+		box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
+	}
+
+	em {
+		color: rgba(#fff, 0.7);
+		font-size: 14px;
+	}
 }
 
 // make search bar responsive
@@ -190,15 +198,43 @@ p {
 }
 //accordions 
 
-.center {
-	text-align: center;
+.card-controls {
+	margin-top: 15px;
 	padding-bottom: 25px;
+	text-align: center;
 }
 
-.center .ui.active.button {
-	background-color: #5862dd;
+.addcard {
+	margin-top: 15px !important;
+}
+
+@media (min-width: 800px) {
+	.card-controls {
+		display: flex;
+		align-content: center;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.ui.addcard.button {
+		margin: 0 !important;
+
+		&:hover {
+			background-color: transparent !important;
+			box-shadow: 0px 0px 0px 2px $accent inset !important;
+			color: $accent !important;
+		}
+	}
+}
+
+.card-controls .ui.active.button {
+	background-color: $accent;
 	box-shadow: 0px 0px 0px 1px transparent inset;
 	color: #fff;
+}
+
+.ui.violet.button {
+	background-color: #5862dd !important;
 }
 
 .accordions {
@@ -442,20 +478,6 @@ p {
 	display: inline;
 }
 
-// add card
-
-.addcard {
-	position:fixed;
-	bottom: 50px;
-	right: 60px;
-	font-size: 1.5em !important;
-	cursor: pointer;
-}
-
-i.inverted.addcard.circular.icon:hover {
-	background-color: #5862dd !important;
-}
-
 // landing page
 
 .landing.hidden, .login.hidden {
@@ -537,6 +559,17 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	flex-shrink: 0;
 	padding-bottom: 5px;
 	background: #aaa;
+
+	.logo {
+		height: auto;
+		text-align: center;
+	}
+
+	@media only screen and (max-width: 767px) {
+		.logo .rhomb {
+			width: 50%;
+		}
+	}
 }
 
 .main-footer .container {
@@ -608,16 +641,22 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	font-size: 16px;
 	padding: 20px 0;
 	color: #151515;
+	text-align: center;
+
+	p {
+		border-top: 2px solid #151515;
+		padding-top: 20px;
+		font-size: 14px;
+		margin: 0 auto;
+		width: 100%;
+	}
 }
 
-.copyright p {
-	border-top: 2px solid #151515;
-	padding-top: 20px;
-	font-size: 14px;
-	margin: 0 auto;
-	width: 100%;
+@media (min-width: 960px) {
+	.copyright {
+		text-align: left;
+	}
 }
-
 
 // make header responsive
 @media (min-width: 960px) {
