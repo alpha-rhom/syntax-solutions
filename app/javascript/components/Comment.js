@@ -72,7 +72,7 @@ class Comments extends React.Component {
 							</Button.Content>
 						</Button>
           </Form>
-        </Comment.Group>
+         </Comment.Group>
 
       </React.Fragment>
     );

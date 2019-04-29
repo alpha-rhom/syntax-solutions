@@ -11,6 +11,8 @@ class Header extends React.Component{
 		const header = document.querySelector('.main-header')
 		const headerContainer = header.querySelector('.container')
 		const searchBar = site.querySelector('.search-bar')
+		const addCard = site.querySelector('.addcard')
+		const cardControls = site.querySelector('.card-controls')
 
     if (landing && site && header) {
 			landing.classList.remove('hidden')
@@ -21,6 +23,10 @@ class Header extends React.Component{
 		
 		if (searchBar) {
 			headerContainer.appendChild(searchBar)
+		}
+
+		if (addCard && cardControls) {
+			cardControls.appendChild(addCard)
 		}
 
 		let last_known_scroll_position = 0;

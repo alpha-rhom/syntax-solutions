@@ -44,22 +44,22 @@ class NewCard extends React.Component {
     
     return (
       <React.Fragment>
-          <Modal trigger={<Icon className='addcard' circular inverted name='plus' />}>
+          <Modal trigger={<Button className='addcard' color="violet" size="big"><Icon name="plus" /> Add Card</Button>}>
           <Modal.Header>New Card</Modal.Header>
           <Modal.Content >
               
             <Form>
-                <Form.Field>
+                <Form.Field required>
                   <label>Title</label>
-                  <input  name="title" autoFocus placeholder='Title' onChange={this.handleChange.bind(this)} />
+                  <input  name="title" autoFocus placeholder='Title' onChange={this.handleChange.bind(this)} required />
               </Form.Field>
               
-                <Form.Field>
+                <Form.Field required>
                   <label>Description</label>
-                  <input  name="desc" placeholder='Description' onChange={this.handleChange.bind(this)} />
+                  <input  name="desc" placeholder='Description' onChange={this.handleChange.bind(this)} required />
               </Form.Field>
               
-                <Form.Field>
+              <Form.Field required>
                 <label>Markdown</label>
                 <AceEditor
                   value={`${this.state.form.markdown}`}
