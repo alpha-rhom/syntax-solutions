@@ -7,7 +7,7 @@ class Footer extends React.Component {
 		return (
 			<React.Fragment>
 				
-\				<footer className="main-footer">
+				<footer className="main-footer">
 					<div className="container">
 						<Grid stackable columns={5}>
 							<Grid.Row>
