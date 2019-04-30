@@ -16,18 +16,14 @@
 
 @import "semantic-ui";
 
-:root {
-	--dur: 1s;
-	--timing: ease;
-}
-
 $bg-color: #eee;
 $accent: #5862dd;
 $card-bg: #fff;
+$duration: 1s;
+$timing: ease;
 
 body {
 	background-color: $bg-color;
-	// display: flex;	
 	font: 18px/1.5 "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
@@ -36,6 +32,10 @@ body > [data-react-class]	 {
 	display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+button {
+	cursor: pointer;
 }
 
 .site {
@@ -95,8 +95,9 @@ p {
 	color: #fff;
 }
 
-.nav a:hover {
+.nav a:hover, .nav a:focus {
 	color: #000;
+	text-decoration: none;
 }
 
 
@@ -285,6 +286,13 @@ p {
 		}
 	}
 
+	// tip button
+	.tipbutton {
+		position: absolute;
+		bottom: 30px;
+		right: 15px;
+	}
+
 	&.active {
 		border-top: 4px solid $accent;
 	}
@@ -349,7 +357,7 @@ p {
 	transform-origin: center;
 	transform-box: fill-box;
 	transform: scaleX(0.8);
-	transition: transform var(--dur) var(--timing);
+	transition: transform $duration $timing;
 }
 
 .oscar:hover .hair {
@@ -359,7 +367,7 @@ p {
 .oscar .head-wrap {
 	position: relative;
 	transform: translateY(14.4px);
-	transition: transform var(--dur) var(--timing);
+	transition: transform $duration $timing;
 }
 
 .oscar:hover .head-wrap {
@@ -371,7 +379,7 @@ p {
 	transform-origin: bottom left;
 	transform-box: fill-box;
 	transform: rotateZ(-90deg) translateX(-7px);
-	transition: transform var(--dur) var(--timing);
+	transition: transform $duration $timing;
 }
 
 .oscar:hover .hand.left {
@@ -382,7 +390,7 @@ p {
 	transform-origin: bottom right;
 	transform-box: fill-box;
 	transform: rotateZ(90deg) translateX(7px);
-	transition: transform var(--dur) var(--timing);
+	transition: transform $duration $timing;
 }
 
 .oscar:hover .hand.right {
@@ -472,10 +480,15 @@ p {
 	width: 100% !important;
 }
 
-//comments
+// comments
 
 .comment time {
 	display: inline;
+}
+
+.ui.comments {
+	margin: 15px 0;
+	max-width: 100%;
 }
 
 // landing page
@@ -591,21 +604,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	}
 }
 
-// .main-footer .column {
-// 	float: left;
-// 	padding-right: 20px;
-// 	width: 20%;
-// }
-
-// .main-footer .column:last-child {
-// 	padding-right: 0;
-// }
-
-// .main-footer .column li, .main-footer .column p {
-// 	font-size: 16px;
-// }
-
-//linkedin
+// linkedin
 .linkedin {
 	font-size: 13px;
 	color: black;
@@ -635,7 +634,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 	font-size: 13px;
 }
 
-//copyright
+// copyright
 .copyright {
 	clear: both;
 	font-size: 16px;
@@ -662,5 +661,41 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 @media (min-width: 960px) {
 	.copyright p {
 		width: 960px;
+	}
+}
+
+// new tip
+.newtip {
+	background: $card-bg;
+	border-top: 4px solid $accent;
+	box-shadow: 0 10px 30px -10px rgba(#333, 0.4);
+	font-size: 18px;
+	padding: 15px;
+	position: absolute; 
+	top: 50%; 
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+	.amount {
+		font-size: 24px;
+		font-family: sans-serif;
+		padding-bottom: 15px;
+	}
+	
+	.stripe-button-el {
+		background: $accent;
+		margin-top: 6px;
+
+		span {
+			background: $accent;
+		}
+
+		&:hover, &:hover span {
+			background: lighten($accent, 5%);
+		}
+	}
+
+	.backbutton {
+		margin-left: 5px;
 	}
 }

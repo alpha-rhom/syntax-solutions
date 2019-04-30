@@ -41,7 +41,7 @@ class UpdateCard extends React.Component {
 
     return (
       <React.Fragment>
-        <Modal trigger={<Icon name='edit' />} >
+        <Modal trigger={<Icon name='edit' />} closeIcon>
           <Modal.Header>Update Card</Modal.Header>
           <Modal.Content >
               <Form>

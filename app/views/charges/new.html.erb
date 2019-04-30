@@ -1,20 +1,21 @@
-<%= form_tag charges_path do %>
-<article>
-<% if flash[:error].present? %>
-<div id="error_explanation">
-<p><%= flash[:error] %></p>
+<div class="newtip">
+	<%= form_tag charges_path do %>
+		<div>
+			<% if flash[:error].present? %>
+			<div id="error_explanation">
+				<p><%= flash[:error] %></p>
+			</div>
+			<% end %>
+			<span class="amount">Amount: $1.00</span>
+		</div>
+
+		<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+			data-description="Tip The Creator"
+			data-amount="100"
+			data-locale="auto">
+		</script>
+		
+		<a href="/cards" class="backbutton">Go Back</a>
+	<% end %>
 </div>
-<% end %>
-<label class="amount">
-<span>Amount: $1.00</span>
-</label>
-</article>
-
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-data-description="Tip The Creator"
-data-amount="100"
-data-locale="auto"></script>
-<% end %>
-
-<a href="/cards"><button>Go Back</button></a>
