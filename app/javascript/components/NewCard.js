@@ -45,7 +45,7 @@ class NewCard extends React.Component {
     
     return (
       <React.Fragment>
-          <Modal trigger={<Button className='addcard' color="violet" size="big"><Icon name="plus" /> Add Card</Button>}>
+          <Modal trigger={<Button className='addcard' color="violet" size="big"><Icon name="plus" /> Add Card</Button>} closeIcon>
           <Modal.Header>New Card</Modal.Header>
           <Modal.Content >
               

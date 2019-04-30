@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Accordion, Icon, Input, Form, Button, Modal, Dropdown } from 'semantic-ui-react'
+import { Accordion, Icon, Input, Form, Button, Dropdown } from 'semantic-ui-react'
 import AceEditor from "react-ace";
 import brace from "brace";
 import 'brace/mode/javascript';
@@ -206,7 +206,7 @@ class Card extends React.Component {
                       />
                       : ''
                       }
-                      <a href="/charges/new">
+                      <a href="/charges/new" className="tipbutton">
                         <Button animated='fade'>
                           <Button.Content visible>Tip $1.00</Button.Content>
                           <Button.Content hidden>
