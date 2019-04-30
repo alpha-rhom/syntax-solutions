@@ -19,7 +19,7 @@ class AuthenticatedApp extends React.Component {
 				<Header current_user={this.props.current_user} />
         <main className="site">
           <Router>
-            <Route exact to="/home" render={() => (
+            <Route exact to="/cards" render={() => (
               <MainPage {...this.props} />
             )}/>
           </Router>

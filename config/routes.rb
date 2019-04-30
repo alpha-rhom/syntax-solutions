@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :libraries, constraints: ->(request){ !request.format.html? }
   devise_for :users
   
+  resources :charges, only: [:new, :create]
   get :search, controller: :main
   get '*path', to: 'pages#protected', constraints: ->(request){ request.format.html? }
   root to: 'pages#unprotected'
