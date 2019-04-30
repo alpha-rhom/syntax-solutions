@@ -70,7 +70,7 @@ class Header extends React.Component{
 							<a rel="nofollow" data-method="delete" href="/users/sign_out"><Icon circular inverted name='log out' /> Logout</a>
 						}
 						</div>
-						<a href="/home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 832 203" className="logo">
+						<a href="/cards"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 832 203" className="logo">
 							<circle cx="101.5" cy="101.5" r="101.5" className="emblem-bg" />
 							<path d="M71 89.8l-36.7 13 36.7 13v16.8l-56.7-20.9V93.9L71 73v16.8zM111.3 46.2h19.4l-38 108.3H73.4l37.9-108.3zM188.7 93.9v17.7L132 132.5v-16.8l36.7-13-36.7-13V73l56.7 20.9z" className="emblem-icon"/>
 							<g className="text">

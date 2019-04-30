@@ -64,3 +64,5 @@ gem 'semantic-ui-sass'
 
 
 gem "coderay", "~> 1.1"
+
+gem 'stripe'

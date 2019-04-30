@@ -206,7 +206,14 @@ class Card extends React.Component {
                       />
                       : ''
                       }
-                      
+                      <a href="/charges/new">
+                        <Button animated='fade'>
+                          <Button.Content visible>Tip $1.00</Button.Content>
+                          <Button.Content hidden>
+                            <Icon name='dollar' />
+                          </Button.Content>
+                        </Button>
+                      </a>
                     </Accordion.Content>
                   </Accordion>
                 </div>
