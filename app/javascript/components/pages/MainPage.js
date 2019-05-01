@@ -18,7 +18,7 @@ class MainPage extends React.Component {
   }
 
   createLibrary = (library) => {
-    return fetch('http://localhost:3000/libraries', {
+    return fetch('/libraries', {
       body: JSON.stringify({library}),
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ class MainPage extends React.Component {
 
   //Edits cards
   handleUpdate = (library) => {
-    fetch(`http://localhost:3000/libraries/${library.id}`,
+    fetch(`/libraries/${library.id}`,
     {
       method: 'PUT',
       body: JSON.stringify({library: library}),
@@ -67,7 +67,7 @@ class MainPage extends React.Component {
   }
   //Delete cards
   handleDelete = (id) => {
-    fetch(`http://localhost:3000/libraries/${id}`,
+    fetch(`/libraries/${id}`,
     {
       method: 'DELETE',
       headers: {
@@ -86,7 +86,7 @@ class MainPage extends React.Component {
   }
 
   createComment = (comment) => {
-    return fetch('http://localhost:3000/comments', {
+    return fetch('/comments', {
       body: JSON.stringify({comment}),  // <- we need to stringify the json for fetch
       headers: {  // <- We specify that we're sending JSON, and expect JSON back
         'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ class MainPage extends React.Component {
   }
 
   createLikeUnlike = (lul) => {
-    return fetch('http://localhost:3000/user_likes', {
+    return fetch('/user_likes', {
       body: JSON.stringify({lul}),  // <- we need to stringify the json for fetch
       headers: {  // <- We specify that we're sending JSON, and expect JSON back
         'Content-Type': 'application/json'
